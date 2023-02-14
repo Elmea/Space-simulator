@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class ChampVectoriel : MonoBehaviour
@@ -14,7 +13,8 @@ public class ChampVectoriel : MonoBehaviour
     private Vector3 GetVector(Vector3 position)
     {
         // Field formula : (-x , -y , -z)
-        return new Vector3(-position.x, -position.y, -position.z);
+        return new Vector3(-MathF.Log10(position.x), -MathF.Log10(position.y), -MathF.Log10(position.z));
+        
     }
     
     public Vector3 GetVectorFromPos(Vector3 position)
