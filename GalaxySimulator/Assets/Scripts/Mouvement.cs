@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,6 +12,15 @@ public class Mouvement : MonoBehaviour
     void Start()
     {
         rbody = GetComponent<Rigidbody>();
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        ChampVectoriel field = other.GetComponent<ChampVectoriel>();
+        if (field)
+        {
+            rbody.velocity += field.GetVectorFromPos(transform.position);
+        }
     }
 
     // Update is called once per frame
