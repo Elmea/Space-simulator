@@ -5,16 +5,31 @@ using UnityEngine;
 
 public class Planet : MonoBehaviour
 {
+    [SerializeField] bool rotation;
+
     [SerializeField] private double mass;
+    [SerializeField] float inclinaisonAngle;
+    [SerializeField] float speedrRot;
+    
+    private float rot;
 
     void Start()
     {
-           
+        rot = 0;
     }
 
     void Update()
     {
-        transform.position = new Vector3(transform.position.x+0.01f, transform.position.y, transform.position.z);
-        Debug.Log(transform.position.x);
+        if (rotation)
+            updateRot();
+    }
+
+    void updateRot()
+    {
+        if (rot >= 360)
+            rot = 0;
+        rot += speedrRot * Time.deltaTime;
+        transform.rotation = Quaternion.Euler(inclinaisonAngle, rot, 0);
+        Debug.Log(transform.rotation.y);
     }
 }
