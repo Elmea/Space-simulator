@@ -12,20 +12,21 @@ public class Mouvement : MonoBehaviour
     void Start()
     {
         rbody = GetComponent<Rigidbody>();
+        rbody.velocity = initialspeed;
     }
 
     private void OnTriggerStay(Collider other)
     {
-        ChampVectoriel field = other.GetComponent<ChampVectoriel>();
+        VectorField field = other.GetComponent<VectorField>();
         if (field)
         {
             rbody.velocity += field.GetVectorFromPos(transform.position);
+            Debug.Log(rbody.velocity);
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        rbody.velocity = initialspeed;
     }
 }
