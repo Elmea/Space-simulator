@@ -4090,6 +4090,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1474361066}
   - component: {fileID: 1474361067}
+  - component: {fileID: 1474361068}
   m_Layer: 5
   m_Name: InstantiacionWindow
   m_TagString: Untagged
@@ -4135,6 +4136,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   planetPrefab: {fileID: 8090868213536984944, guid: 8684a25bbf623914e9c91759bb63151b, type: 3}
+--- !u!114 &1474361068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1474361065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b42bb007b2c5f341b11db57372f5ccb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PosXInput: {fileID: 726584332}
+  PosYInput: {fileID: 1434115027}
+  PosZInput: {fileID: 843960302}
+  SpeedXInput: {fileID: 1493302263}
+  SpeedYInput: {fileID: 1541673328}
+  SpeedZInput: {fileID: 868022656}
+  MassInput: {fileID: 1393002039}
+  InputSelected: 0
 --- !u!1 &1493302261
 GameObject:
   m_ObjectHideFlags: 0
@@ -4163,7 +4184,7 @@ RectTransform:
   m_GameObject: {fileID: 1493302261}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.36, y: 0.36, z: 0.36}
+  m_LocalScale: {x: 0.35999995, y: 0.35999995, z: 0.35999995}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 580252073}
@@ -4172,7 +4193,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -150, y: 36.600002}
+  m_AnchoredPosition: {x: -150.00003, y: 36.59999}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1493302263
