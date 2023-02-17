@@ -7,7 +7,7 @@ public class Planet : MonoBehaviour
 {
     [SerializeField] bool rotation;
 
-    [SerializeField] private double mass;
+    [SerializeField] public float mass;
     [SerializeField] float inclinaisonAngle;
     [SerializeField] float speedrRot;
     
@@ -16,6 +16,8 @@ public class Planet : MonoBehaviour
     void Start()
     {
         rot = 0;
+        if (mass < 0)
+            mass = 0;
     }
 
     void Update()

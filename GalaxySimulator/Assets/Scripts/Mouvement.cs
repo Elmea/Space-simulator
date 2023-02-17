@@ -7,12 +7,15 @@ public class Mouvement : MonoBehaviour
 {
     [SerializeField] Vector3 initialspeed;
     private Rigidbody rbody;
-
+    private Planet planet;
+    static float ForceDevider = 10000;
+    
     // Start is called before the first frame update
     void Start()
     {
         rbody = GetComponent<Rigidbody>();
-        rbody.velocity = initialspeed;
+        rbody.velocity = initialspeed / ForceDevider;
+        planet = GetComponent<Planet>();
     }
 
     private void OnTriggerStay(Collider other)
@@ -20,7 +23,7 @@ public class Mouvement : MonoBehaviour
         VectorField field = other.GetComponent<VectorField>();
         if (field)
         {
-            rbody.velocity += field.GetVectorFromPos(transform.position);
+            rbody.AddForce(field.GetVectorFromPos(transform.position) / ForceDevider, ForceMode.Acceleration);
             Debug.Log(rbody.velocity);
         }
     }

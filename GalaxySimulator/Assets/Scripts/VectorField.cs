@@ -5,6 +5,15 @@ public class VectorField : MonoBehaviour
 {
     private Planet planet;
 
+    private static float G = 6.67428f * Mathf.Pow(10, -11);
+    
+    private static float DistanceScale = Mathf.Pow(10, 7);
+    
+    private void Start()
+    {
+        planet = GetComponent<Planet>();
+    }
+
     private Vector3 CalcPosInVectorField(Vector3 position)
     {
         return position - transform.position;
@@ -12,15 +21,16 @@ public class VectorField : MonoBehaviour
     
     private Vector3 GetVector(Vector3 positionInField)
     {
-        // Field formula : ( - x log10(||P||), - y log10(||P||), - z log10(||P||)) 
+        // Field formula : () 
         float distance = positionInField.magnitude;
-
-        return new Vector3( - positionInField.x * MathF.Log10(distance), - positionInField.y * MathF.Log10(distance), - positionInField.z * MathF.Log10(distance));
+        float force = G * (planet.mass) / (distance * distance * DistanceScale * DistanceScale);
+        
+        return new Vector3( - (positionInField.x * force), - (positionInField.y  * force), - (positionInField.z * force));
     }
     
     public Vector3 GetVectorFromPos(Vector3 position)
     {
-        Vector3 posInField = CalcPosInVectorField(position);
+        Vector3 posInField = CalcPosInVectorField(position); 
         
         return GetVector(posInField);
     }
