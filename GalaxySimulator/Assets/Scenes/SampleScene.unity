@@ -2700,7 +2700,7 @@ MonoBehaviour:
   down: 306
   forward: 119
   back: 115
-  speed: 1
+  speed: 0.1
 --- !u!1 &1019548667
 GameObject:
   m_ObjectHideFlags: 0
