@@ -14,7 +14,7 @@ public class Mouvement : MonoBehaviour
     void Start()
     {
         rbody = GetComponent<Rigidbody>();
-        rbody.velocity = initialspeed / ForceDevider;
+        rbody.velocity = initialspeed / 1000;
         planet = GetComponent<Planet>();
     }
 
@@ -26,6 +26,11 @@ public class Mouvement : MonoBehaviour
             rbody.AddForce(field.GetVectorFromPos(transform.position) / ForceDevider, ForceMode.Acceleration);
             Debug.Log(rbody.velocity);
         }
+    }
+    
+    public void SetParameter(Vector3 parInitialSpeed)
+    {
+        initialspeed = parInitialSpeed;
     }
 
     // Update is called once per frame

@@ -7,7 +7,7 @@ public class VectorField : MonoBehaviour
 
     private static float G = 6.67428f * Mathf.Pow(10, -11);
     
-    private static float DistanceScale = Mathf.Pow(10, 7);
+    private static float DistanceScale = Mathf.Pow(10, 6);
     
     private void Start()
     {

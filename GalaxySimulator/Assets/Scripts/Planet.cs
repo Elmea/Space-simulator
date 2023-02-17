@@ -9,7 +9,7 @@ public class Planet : MonoBehaviour
 
     [SerializeField] public float mass;
     [SerializeField] float inclinaisonAngle;
-    [SerializeField] float speedrRot;
+    [SerializeField] float rotSpeed;
     
     private float rot;
 
@@ -21,7 +21,7 @@ public class Planet : MonoBehaviour
     }
 
     void Update()
-    {
+    {       
         if (rotation)
             updateRot();
     }
@@ -30,8 +30,16 @@ public class Planet : MonoBehaviour
     {
         if (rot >= 360)
             rot = 0;
-        rot += speedrRot * Time.deltaTime;
+        rot += rotSpeed * Time.deltaTime;
         transform.rotation = Quaternion.Euler(inclinaisonAngle, rot, 0);
-        Debug.Log(transform.rotation.y);
+    }
+
+    public void SetParameters(Vector3 position , float mass, float inclinaisonAngle, float rotSpeed)
+    {
+        this.mass = mass;
+        this.inclinaisonAngle = inclinaisonAngle;
+        this.rotSpeed = rotSpeed;
+        transform.position = position;
+
     }
 }
