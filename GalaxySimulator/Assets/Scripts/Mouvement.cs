@@ -21,12 +21,17 @@ public class Mouvement : MonoBehaviour
         if (field)
         {
             rbody.velocity += field.GetVectorFromPos(transform.position);
-            Debug.Log(rbody.velocity);
         }
+    }
+
+    public void SetParameter(Vector3 parInitialSpeed)
+    {
+        initialspeed = parInitialSpeed;
     }
 
     // Update is called once per frame
     void Update()
     {
+
     }
 }
