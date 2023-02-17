@@ -113,7 +113,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotation: 1
-  mass: 145
+  mass: 5
   inclinaisonAngle: 0
   rotSpeed: 0
 --- !u!114 &8090868213536984950
@@ -128,7 +128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84283dca1526db543a66c8758666eea0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialspeed: {x: 0, y: 0, z: 0}
+  initialspeed: {x: 50, y: 0, z: 0}
 --- !u!54 &8090868213536984937
 Rigidbody:
   m_ObjectHideFlags: 0
