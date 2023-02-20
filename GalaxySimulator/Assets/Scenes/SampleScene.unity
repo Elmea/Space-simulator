@@ -1428,6 +1428,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3418595086502692001, guid: 4e81cfc34fa0dc44282a227b394b3450, type: 3}
+      propertyPath: mass
+      value: 1.989e+30
+      objectReference: {fileID: 0}
     - target: {fileID: 3418595086502692007, guid: 4e81cfc34fa0dc44282a227b394b3450, type: 3}
       propertyPath: m_Name
       value: Sun
@@ -4486,14 +4490,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Terre
       objectReference: {fileID: 0}
-    - target: {fileID: 8090868213536984950, guid: 8684a25bbf623914e9c91759bb63151b, type: 3}
-      propertyPath: initialspeed.x
-      value: 105447.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 8090868213536984950, guid: 8684a25bbf623914e9c91759bb63151b, type: 3}
-      propertyPath: initialspeed.z
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8090868213536984951, guid: 8684a25bbf623914e9c91759bb63151b, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -4508,7 +4504,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8090868213536984951, guid: 8684a25bbf623914e9c91759bb63151b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 152
+      value: 152.0977
       objectReference: {fileID: 0}
     - target: {fileID: 8090868213536984951, guid: 8684a25bbf623914e9c91759bb63151b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -4554,6 +4550,10 @@ PrefabInstance:
     - target: {fileID: 4091483955047809946, guid: c79d42e82171cda458fa45d3688180ae, type: 3}
       propertyPath: m_Time
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4091483955047809948, guid: c79d42e82171cda458fa45d3688180ae, type: 3}
+      propertyPath: initialspeed.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4091483955047809949, guid: c79d42e82171cda458fa45d3688180ae, type: 3}
       propertyPath: m_RootOrder

@@ -16,8 +16,6 @@ public class Planet : MonoBehaviour
     void Start()
     {
         rot = 0;
-        if (mass < 0)
-            mass = 0;
     }
 
     void Update()

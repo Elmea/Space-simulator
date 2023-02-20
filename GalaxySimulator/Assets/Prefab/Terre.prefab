@@ -129,7 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84283dca1526db543a66c8758666eea0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialspeed: {x: 50000, y: 0, z: 50000}
+  initialspeed: {x: 105447.6, y: 0, z: 0}
 --- !u!54 &8090868213536984937
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -188,7 +188,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 120
+  m_Time: 20
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
