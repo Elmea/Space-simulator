@@ -11,7 +11,14 @@ public class CameraMvt : MonoBehaviour
     [SerializeField] KeyCode forward;
     [SerializeField] KeyCode back;
 
+    [SerializeField] KeyCode hideCursor;
+
     [SerializeField] float speed;
+    [SerializeField] float mouseSensitivity = 2f;
+    float cameraVerticalRotation = 0f;
+    float cameraHorizontalRotation = 0f;
+
+    bool cursor = true;
 
     private void Update()
     {
@@ -32,6 +39,24 @@ public class CameraMvt : MonoBehaviour
             newPos.z += speed;
 
         transform.position = newPos;
+
+        if (Input.GetKeyDown(hideCursor))
+            cursor = !cursor;
+
+        if (!cursor)
+            MouseInput();
+        else
+            Cursor.visible = true;
     }
 
+
+    private void MouseInput()
+    {
+        Cursor.visible = false;
+
+        float newRotationX = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * mouseSensitivity;
+        float newRotationY = transform.localEulerAngles.x - Input.GetAxis("Mouse Y") * mouseSensitivity;
+        transform.localEulerAngles = new Vector3(newRotationY, newRotationX, 0f);
+
+    }
 }
