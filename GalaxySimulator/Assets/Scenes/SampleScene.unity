@@ -1428,17 +1428,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3418595086502692001, guid: 4e81cfc34fa0dc44282a227b394b3450, type: 3}
-      propertyPath: mass
-      value: 1.989e+30
-      objectReference: {fileID: 0}
     - target: {fileID: 3418595086502692007, guid: 4e81cfc34fa0dc44282a227b394b3450, type: 3}
       propertyPath: m_Name
       value: Sun
-      objectReference: {fileID: 0}
-    - target: {fileID: 3418595086502692062, guid: 4e81cfc34fa0dc44282a227b394b3450, type: 3}
-      propertyPath: m_Radius
-      value: 38.9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e81cfc34fa0dc44282a227b394b3450, type: 3}
@@ -2703,24 +2695,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Padding: {x: -8, y: -5, z: -8, w: -5}
   m_Softness: {x: 0, y: 0}
---- !u!1 &1070891598 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3418595086502692007, guid: 4e81cfc34fa0dc44282a227b394b3450, type: 3}
-  m_PrefabInstance: {fileID: 673724054}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1070891606
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1070891598}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84283dca1526db543a66c8758666eea0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  initialspeed: {x: 0, y: 0, z: 0}
 --- !u!1 &1089617097
 GameObject:
   m_ObjectHideFlags: 0
@@ -4488,6 +4462,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 575380356, guid: 8684a25bbf623914e9c91759bb63151b, type: 3}
+      propertyPath: m_Time
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 8090868213536984944, guid: 8684a25bbf623914e9c91759bb63151b, type: 3}
       propertyPath: m_Name
       value: Terre
@@ -4552,10 +4530,6 @@ PrefabInstance:
     - target: {fileID: 4091483955047809946, guid: c79d42e82171cda458fa45d3688180ae, type: 3}
       propertyPath: m_Time
       value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 4091483955047809948, guid: c79d42e82171cda458fa45d3688180ae, type: 3}
-      propertyPath: initialspeed.y
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4091483955047809949, guid: c79d42e82171cda458fa45d3688180ae, type: 3}
       propertyPath: m_RootOrder
@@ -5268,6 +5242,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 575380356, guid: 2c3015e7c28453041aab7c85c4f1c32a, type: 3}
+      propertyPath: m_Time
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 575380356, guid: 2c3015e7c28453041aab7c85c4f1c32a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 088c29fb464ec0746b68758c7a40ede7, type: 2}
     - target: {fileID: 8090868213536984944, guid: 2c3015e7c28453041aab7c85c4f1c32a, type: 3}
       propertyPath: m_Name
       value: Venus
