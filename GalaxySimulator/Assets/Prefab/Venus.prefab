@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 8090868213536984937}
   - component: {fileID: 575380356}
   m_Layer: 0
-  m_Name: Terre
+  m_Name: Venus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,8 +31,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8090868213536984944}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 50, z: 50}
-  m_LocalScale: {x: 0.6371, y: 0.6371, z: 0.6371}
+  m_LocalPosition: {x: 108.943, y: 108.943, z: 0}
+  m_LocalScale: {x: 0.6051, y: 0.6051, z: 0.6051}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -66,7 +66,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d68e803e780d6aa40999593121da04b0, type: 2}
+  - {fileID: 2100000, guid: 58d2761759d5bc44e8b17db6aae96a1e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -114,7 +114,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotation: 1
-  mass: 5e+23
+  mass: 4.8675e+24
   inclinaisonAngle: 0
   rotSpeed: 0
 --- !u!114 &8090868213536984950
@@ -129,7 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84283dca1526db543a66c8758666eea0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialspeed: {x: 0, y: 0, z: 100000}
+  initialspeed: {x: 125240.4, y: 0, z: 0}
 --- !u!54 &8090868213536984937
 Rigidbody:
   m_ObjectHideFlags: 0
