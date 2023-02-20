@@ -22,10 +22,7 @@ public class Mouvement : MonoBehaviour
     {
         VectorField field = other.GetComponent<VectorField>();
         if (field)
-        {
             rbody.AddForce(field.GetVectorFromPos(transform.position) / ForceDevider, ForceMode.Acceleration);
-            Debug.Log(rbody.velocity);
-        }
     }
     
     public void SetParameter(Vector3 parInitialSpeed)
