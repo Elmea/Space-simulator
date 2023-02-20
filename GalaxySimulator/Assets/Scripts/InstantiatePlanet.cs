@@ -35,11 +35,12 @@ public class InstantiatePlanet : MonoBehaviour
 
         float mass = float.Parse(transform.Find("Mass").Find("Mass Input").GetComponent<TMP_InputField>().text);
 
+        GameObject newPrefab = Instantiate(planetPrefab);
+
         float inclinaisonAngle = 0;
         float rotSpeed = 0;
-        planetPrefab.GetComponent<Planet>().SetParameters(pos, mass, inclinaisonAngle, rotSpeed);
-        planetPrefab.GetComponent<Mouvement>().SetParameter(initialSpeed);
-        Instantiate(planetPrefab);
+        newPrefab.GetComponent<Planet>().SetParameters(pos, mass, inclinaisonAngle, rotSpeed);
+        newPrefab.GetComponent<Mouvement>().SetParameter(initialSpeed);
     }
 
 }
