@@ -15,10 +15,12 @@ public class CameraMvt : MonoBehaviour
 
     [SerializeField] float speed;
     [SerializeField] float mouseSensitivity = 2f;
-    float cameraVerticalRotation = 0f;
-    float cameraHorizontalRotation = 0f;
 
     bool cursor = true;
+
+    GameObject target;
+    float distanceToTarget = 50;
+    
 
     private void Update()
     {
@@ -43,14 +45,21 @@ public class CameraMvt : MonoBehaviour
         if (Input.GetKeyDown(hideCursor))
             cursor = !cursor;
 
+        if (target != null)
+            FollowTarget();
+
         if (!cursor)
-            MouseInput();
+            CameraRotation();
         else
             Cursor.visible = true;
     }
 
+    private void FollowTarget()
+    {
 
-    private void MouseInput()
+    }
+
+    private void CameraRotation()
     {
         Cursor.visible = false;
 

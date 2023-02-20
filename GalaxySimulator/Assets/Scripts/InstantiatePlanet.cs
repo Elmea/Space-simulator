@@ -7,7 +7,7 @@ public class InstantiatePlanet : MonoBehaviour
 {
 
     [SerializeField] private GameObject planetPrefab;
-
+    
 
     // Start is called before the first frame update
     void Start()
