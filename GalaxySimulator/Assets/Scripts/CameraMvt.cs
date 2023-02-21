@@ -13,7 +13,7 @@ public class CameraMvt : MonoBehaviour
 
     [SerializeField] KeyCode hideCursor;
 
-    [SerializeField] float speed;
+    [SerializeField] float speed=50;
     [SerializeField] float mouseSensitivity = 2f;
 
     bool cursor = true;
@@ -24,21 +24,23 @@ public class CameraMvt : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log(transform.forward);
+
         Vector3 newPos = transform.position;
         if(Input.GetKey(left))
-            newPos.x -= speed;
+            newPos -= transform.right * speed;
         if (Input.GetKey(right))
-            newPos.x += speed;
+            newPos += transform.right * speed;
 
         if (Input.GetKey(down))
-            newPos.y -= speed;
+            newPos -= transform.up * speed;
         if (Input.GetKey(up))
-            newPos.y += speed;
+            newPos += transform.up * speed;
 
         if (Input.GetKey(back))
-            newPos.z -= speed;
+            newPos -= transform.forward * speed;
         if (Input.GetKey(forward))
-            newPos.z += speed;
+            newPos += transform.forward * speed;
 
         transform.position = newPos;
 
