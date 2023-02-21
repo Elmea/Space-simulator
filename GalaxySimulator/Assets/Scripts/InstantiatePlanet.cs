@@ -24,16 +24,18 @@ public class InstantiatePlanet : MonoBehaviour
 
         float mass = float.Parse(transform.Find("Mass").Find("Mass Input").GetComponent<TMP_InputField>().text);
 
-        GameObject newPrefab = Instantiate(planetPrefab);
-        newPrefab.transform.parent = galaxy.transform;
-
-        newPrefab = Instantiate(objectSelectorButton);
-        newPrefab.transform.parent = container.transform;
-
+        GameObject newPlanet = Instantiate(planetPrefab);
+        newPlanet.name = transform.Find("Name").Find("Name Input").GetComponent<TMP_InputField>().text;
+        newPlanet.transform.SetParent(galaxy.transform);
         float inclinaisonAngle = 0;
         float rotSpeed = 0;
-        newPrefab.GetComponent<Planet>().SetParameters(pos, mass, inclinaisonAngle, rotSpeed);
-        newPrefab.GetComponent<Mouvement>().SetParameter(initialSpeed);
+        newPlanet.GetComponent<Planet>().SetParameters(pos, mass, inclinaisonAngle, rotSpeed);
+        newPlanet.GetComponent<Mouvement>().SetParameter(initialSpeed);
+
+        GameObject newButton = Instantiate(objectSelectorButton);
+        newButton.transform.SetParent(container.transform);
+        newButton.GetComponent<SetCameraTarget>().linkedObject = newPlanet;
+        newButton.GetComponent<SetCameraTarget>().SetText(newPlanet.name);
     }
 
 }

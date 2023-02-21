@@ -147,6 +147,7 @@ GameObject:
   - component: {fileID: 6322178688928169448}
   - component: {fileID: 6322178688928169463}
   - component: {fileID: 6322178688928169462}
+  - component: {fileID: 4239278918997863149}
   m_Layer: 5
   m_Name: ObjectSelectorButton
   m_TagString: Untagged
@@ -257,3 +258,15 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &4239278918997863149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6322178688928169460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f0a369a373dfbf46b522e5b57f27b82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

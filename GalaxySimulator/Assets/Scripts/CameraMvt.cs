@@ -13,46 +13,50 @@ public class CameraMvt : MonoBehaviour
 
     [SerializeField] KeyCode hideCursor;
 
-    [SerializeField] float speed=50;
+    [SerializeField] float speed = 50;
     [SerializeField] float mouseSensitivity = 2f;
 
     bool cursor = true;
 
-    GameObject target;
+    [HideInInspector] public GameObject target;
     float distanceToTarget = 50;
     
 
     private void Update()
     {
-        Vector3 newPos = transform.position;
-        if(Input.GetKey(left))
-            newPos -= transform.right * speed;
-        if (Input.GetKey(right))
-            newPos += transform.right * speed;
+        if(!cursor)
+        {
+            Vector3 newPos = transform.position;
+            if(Input.GetKey(left))
+                newPos -= transform.right * speed;
+            if (Input.GetKey(right))
+                newPos += transform.right * speed;
 
-        if (Input.GetKey(down))
-            newPos -= transform.up * speed;
-        if (Input.GetKey(up))
-            newPos += transform.up * speed;
+            if (Input.GetKey(down))
+                newPos -= transform.up * speed;
+            if (Input.GetKey(up))
+                newPos += transform.up * speed;
 
-        if (Input.GetKey(back))
-            newPos -= transform.forward * speed;
-        if (Input.GetKey(forward))
-            newPos += transform.forward * speed;
+            if (Input.GetKey(back))
+                newPos -= transform.forward * speed;
+            if (Input.GetKey(forward))
+                newPos += transform.forward * speed;
 
-        transform.position = newPos;
+            transform.position = newPos;
 
-        if (Input.GetKey(hideCursor))
-            cursor = false;
+            CameraRotation();
+        }
         else
-            cursor = true;
+        {
+            Cursor.visible = true;
+        }
+
+        if (Input.GetKeyDown(hideCursor))
+            cursor = !cursor;
+
         if (target != null)
             FollowTarget();
 
-        if (!cursor)
-            CameraRotation();
-        else
-            Cursor.visible = true;
     }
 
     private void FollowTarget()
