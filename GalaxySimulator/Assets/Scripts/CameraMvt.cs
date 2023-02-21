@@ -24,8 +24,6 @@ public class CameraMvt : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(transform.forward);
-
         Vector3 newPos = transform.position;
         if(Input.GetKey(left))
             newPos -= transform.right * speed;

@@ -13,9 +13,11 @@ public class Mouvement : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {
+    { 
+        
         rbody = GetComponent<Rigidbody>();
-        rbody.velocity = initialspeed / 1000;
+        if(rbody != null)
+            rbody.velocity = initialspeed / 1000;
         planet = GetComponent<Planet>();
     }
 
