@@ -9,7 +9,8 @@ public class Mouvement : MonoBehaviour
     private Rigidbody rbody;
     private Planet planet;
     static float ForceDevider = 10000;
-    
+    [SerializeField] int timeMultiplier = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,10 +23,7 @@ public class Mouvement : MonoBehaviour
     {
         VectorField field = other.GetComponent<VectorField>();
         if (field)
-        {
             rbody.AddForce(field.GetVectorFromPos(transform.position) / ForceDevider, ForceMode.Acceleration);
-            Debug.Log(rbody.velocity);
-        }
     }
     
     public void SetParameter(Vector3 parInitialSpeed)

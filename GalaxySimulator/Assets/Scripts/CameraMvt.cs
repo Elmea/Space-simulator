@@ -44,9 +44,10 @@ public class CameraMvt : MonoBehaviour
 
         transform.position = newPos;
 
-        if (Input.GetKeyDown(hideCursor))
-            cursor = !cursor;
-
+        if (Input.GetKey(hideCursor))
+            cursor = false;
+        else
+            cursor = true;
         if (target != null)
             FollowTarget();
 
