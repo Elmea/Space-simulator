@@ -7,20 +7,9 @@ public class InstantiatePlanet : MonoBehaviour
 {
 
     [SerializeField] private GameObject planetPrefab;
-    
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-    
+    [SerializeField] private GameObject objectSelectorButton;
+    [SerializeField] private GameObject galaxy;
+    [SerializeField] private GameObject container;
     public void OnClick()
     {
         Vector3 pos;
@@ -35,12 +24,18 @@ public class InstantiatePlanet : MonoBehaviour
 
         float mass = float.Parse(transform.Find("Mass").Find("Mass Input").GetComponent<TMP_InputField>().text);
 
-        GameObject newPrefab = Instantiate(planetPrefab);
-
+        GameObject newPlanet = Instantiate(planetPrefab);
+        newPlanet.name = transform.Find("Name").Find("Name Input").GetComponent<TMP_InputField>().text;
+        newPlanet.transform.SetParent(galaxy.transform);
         float inclinaisonAngle = 0;
         float rotSpeed = 0;
-        newPrefab.GetComponent<Planet>().SetParameters(pos, mass, inclinaisonAngle, rotSpeed);
-        newPrefab.GetComponent<Mouvement>().SetParameter(initialSpeed);
+        newPlanet.GetComponent<Planet>().SetParameters(pos, mass, inclinaisonAngle, rotSpeed);
+        newPlanet.GetComponent<Mouvement>().SetParameter(initialSpeed);
+
+        GameObject newButton = Instantiate(objectSelectorButton);
+        newButton.transform.SetParent(container.transform);
+        newButton.GetComponent<SetCameraTarget>().linkedObject = newPlanet;
+        newButton.GetComponent<SetCameraTarget>().SetText(newPlanet.name);
     }
 
 }
