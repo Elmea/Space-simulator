@@ -11,6 +11,8 @@ public class Planet : MonoBehaviour
     [SerializeField] float inclinaisonAngle;
     [SerializeField] float rotSpeed;
     
+    public static float DistanceScale = Mathf.Pow(10, 9);
+    
     private float rot;
 
     void Start()
