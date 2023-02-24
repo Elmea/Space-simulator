@@ -24,7 +24,7 @@ public class Mouvement : MonoBehaviour
         if (field)
         {
             rbody.AddForce(field.GetVectorFromPos(transform.position) / ForceDevider, ForceMode.Acceleration);
-            Debug.Log(rbody.velocity);
+            //Debug.Log(rbody.velocity);
         }
     }
     

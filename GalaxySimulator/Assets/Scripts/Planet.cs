@@ -6,7 +6,6 @@ using UnityEngine;
 public class Planet : MonoBehaviour
 {
     [SerializeField] bool rotation;
-
     [SerializeField] public float mass;
     [SerializeField] float inclinaisonAngle;
     [SerializeField] float rotSpeed;
