@@ -71,7 +71,6 @@ public class VectorField : MonoBehaviour
                             vectorIntensity = 0.01f;
                         Debug.Log(vectorIntensity);
                         newPrefab.transform.localScale = new Vector3(vectorIntensity, vectorIntensity, vectorIntensity);
-                        //newPrefab.GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
                     }
                 }
             }
