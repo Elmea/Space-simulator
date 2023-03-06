@@ -19,11 +19,14 @@ public class CameraMvt : MonoBehaviour
     bool cursor = true;
 
     [HideInInspector] public GameObject target;
-    float distanceToTarget = 50;
-    
+    Vector3 posFromTarget;    
+    float posXFromTarget=0;
+    float posYFromTarget=0;
+    float posZFromTarget=10;
 
     private void Update()
     {
+
         if(!cursor)
         {
             Vector3 newPos = transform.position;
@@ -61,6 +64,26 @@ public class CameraMvt : MonoBehaviour
 
     private void FollowTarget()
     {
+        transform.LookAt(target.transform);
+
+        posFromTarget = new Vector3(posXFromTarget,posYFromTarget,posZFromTarget);
+
+        if (Input.GetKey(left))
+            posXFromTarget -= transform.right.x * speed;
+        if (Input.GetKey(right))
+            posXFromTarget += transform.right.x * speed;
+    
+        if (Input.GetKey(down))
+            posYFromTarget -= transform.up.y * speed;
+        if (Input.GetKey(up))
+            posYFromTarget += transform.up.y * speed;
+
+        if (Input.GetKey(back))
+            posZFromTarget -= transform.forward.z * speed;
+        if (Input.GetKey(forward))
+            posZFromTarget += transform.forward.z * speed;
+
+        transform.position = posFromTarget + target.transform.position;
 
     }
 
