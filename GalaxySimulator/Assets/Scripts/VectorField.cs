@@ -1,11 +1,10 @@
-using System;
 using UnityEngine;
 
 public class VectorField : MonoBehaviour
 {
     private Planet planet;
 
-    private static float G = 6.67428f * Mathf.Pow(10, -11);
+    private static float G = (float)6.6743e-11;
     
     private void Start()
     {

@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
 
 public class Planet : MonoBehaviour
 {
@@ -11,7 +8,7 @@ public class Planet : MonoBehaviour
     [SerializeField] float inclinaisonAngle;
     [SerializeField] float rotSpeed;
     
-    public static float DistanceScale = Mathf.Pow(10, 9);
+    public static float DistanceScale = (float)1.0e+9;
     
     private float rot;
 

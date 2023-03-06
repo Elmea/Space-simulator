@@ -8,8 +8,7 @@ public class Mouvement : MonoBehaviour
     private Vector3 velocity = new Vector3( 0.0f, 0.0f, 0.0f );
     private Vector3 acceleration = new Vector3( 0.0f, 0.0f, 0.0f );
     private Vector3 newAcceleration = new Vector3( 0.0f, 0.0f, 0.0f );
-    private static float dt = 10000.0f;
-    bool firstFrame = true;
+    private static float dt = 36000.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -31,10 +30,10 @@ public class Mouvement : MonoBehaviour
     private void OnTriggerStay(Collider other)
     {
         VectorField field = other.GetComponent<VectorField>();
-        Vector3 newPosition = (transform.position * Planet.DistanceScale + velocity * dt + acceleration * (dt * dt * 0.5f));
+
         if (field)
         {
-            newAcceleration += field.GetVectorFromPos(newPosition);
+            newAcceleration += field.GetVectorFromPos(transform.position * Planet.DistanceScale);
         }
     }
     
@@ -43,15 +42,19 @@ public class Mouvement : MonoBehaviour
         initialspeed = parInitialSpeed;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void FixedUpdate()
     {
         Vector3 newPosition = (transform.position * Planet.DistanceScale + velocity * dt + acceleration * (dt * dt * 0.5f));
-        Vector3 newVelocity = velocity + (acceleration + newAcceleration) * (0.5f * dt);
-
         transform.position = newPosition / Planet.DistanceScale;
+    }
+
+    void Update()
+    {
+        Vector3 newVelocity = velocity + (acceleration + newAcceleration) * (0.5f * dt);
         velocity = newVelocity;
+        
         acceleration = newAcceleration;
+
         newAcceleration = new Vector3(0, 0 , 0);
     }
 }
