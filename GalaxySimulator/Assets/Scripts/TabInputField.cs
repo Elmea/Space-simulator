@@ -16,6 +16,9 @@ public class TabInputField : MonoBehaviour
     //Mass
     public TMP_InputField MassInput;
 
+    //Name
+    public TMP_InputField NameInput;
+
     public int InputSelected;
 
     private void Update()
@@ -23,14 +26,14 @@ public class TabInputField : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Tab) && Input.GetKey(KeyCode.LeftShift))
         {
             InputSelected++;
-            if (InputSelected < 6) 
+            if (InputSelected < 7) 
                 InputSelected = 0;
             SelectInputField();
         }
         if (Input.GetKeyDown(KeyCode.Tab))
         {
             InputSelected++;
-            if (InputSelected > 6) 
+            if (InputSelected > 7) 
                 InputSelected = 0;
             SelectInputField();
         }
@@ -48,6 +51,7 @@ public class TabInputField : MonoBehaviour
                 case 4: SpeedYInput.Select(); break;
                 case 5: SpeedZInput.Select(); break;
                 case 6: MassInput.Select(); break;
+                case 7: NameInput.Select(); break;
             }
         }
     }
