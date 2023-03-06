@@ -38,5 +38,6 @@ public class InstantiatePlanet : MonoBehaviour
         newButton.GetComponent<SetCameraTarget>().SetText(newPlanet.name);
     }
 
+
 }
 

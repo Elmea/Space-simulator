@@ -1,31 +1,40 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using Vector3 = UnityEngine.Vector3;
 
 public class Mouvement : MonoBehaviour
 {
     [SerializeField] Vector3 initialspeed;
-    private Rigidbody rbody;
-    private Planet planet;
-    static float ForceDevider = 10000;
-    [SerializeField] int timeMultiplier = 0;
+    private Vector3 velocity = new Vector3( 0.0f, 0.0f, 0.0f );
+    private Vector3 acceleration = new Vector3( 0.0f, 0.0f, 0.0f );
+    private Vector3 newAcceleration = new Vector3( 0.0f, 0.0f, 0.0f );
+    private static float dt = 36000.0f;
 
     // Start is called before the first frame update
     void Start()
-    { 
-        
-        rbody = GetComponent<Rigidbody>();
-        if(rbody != null)
-            rbody.velocity = initialspeed / 1000;
-        planet = GetComponent<Planet>();
-    }
+    {
+        velocity = GetMsSpeedFromKms(initialspeed);
+        acceleration = new Vector3(0.0f, 0.0f, 0.0f);
+    } 
 
+    private Vector3 GetMsSpeedFromKms(Vector3 speedKms)
+    {
+        return speedKms * 1000.0f;
+    }
+    
+    private Vector3 GetKmsSpeedFromMs(Vector3 speedMs)
+    {
+        return speedMs / 1000.0f;
+    }
+    
     private void OnTriggerStay(Collider other)
     {
         VectorField field = other.GetComponent<VectorField>();
+
         if (field)
-            rbody.AddForce(field.GetVectorFromPos(transform.position) / ForceDevider, ForceMode.Acceleration);
+        {
+            newAcceleration += field.GetVectorFromPos(transform.position * Planet.DistanceScale);
+        }
     }
     
     public void SetParameter(Vector3 parInitialSpeed)
@@ -33,8 +42,19 @@ public class Mouvement : MonoBehaviour
         initialspeed = parInitialSpeed;
     }
 
-    // Update is called once per frame
+    private void FixedUpdate()
+    {
+        Vector3 newPosition = (transform.position * Planet.DistanceScale + velocity * dt + acceleration * (dt * dt * 0.5f));
+        transform.position = newPosition / Planet.DistanceScale;
+    }
+
     void Update()
     {
+        Vector3 newVelocity = velocity + (acceleration + newAcceleration) * (0.5f * dt);
+        velocity = newVelocity;
+        
+        acceleration = newAcceleration;
+
+        newAcceleration = new Vector3(0, 0 , 0);
     }
 }
