@@ -65,9 +65,13 @@ public class VectorField : MonoBehaviour
                         GameObject newPrefab = Instantiate(Vector);
                         newPrefab.transform.position = new Vector3(-startCube.x + i*tranche, -startCube.y + j*tranche, -startCube.z + k*tranche);
                         Vector3 dir = GetVectorFromPos(newPrefab.transform.position);
-                        newPrefab.transform.rotation = Quaternion.FromToRotation(Vector3.up, dir);
-                        
-
+                        newPrefab.transform.rotation = Quaternion.FromToRotation(Vector3.up, -dir);
+                        float vectorIntensity = dir.magnitude/10000000;
+                        if (vectorIntensity >= 5)
+                            vectorIntensity = 0.01f;
+                        Debug.Log(vectorIntensity);
+                        newPrefab.transform.localScale = new Vector3(vectorIntensity, vectorIntensity, vectorIntensity);
+                        //newPrefab.GetComponent<MeshRenderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
                     }
                 }
             }
