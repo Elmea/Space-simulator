@@ -5,11 +5,12 @@ using TMPro;
 
 public class SetCameraTarget : MonoBehaviour
 {
-    [HideInInspector] public GameObject linkedObject;
+    public GameObject linkedObject;
     Camera cam;
 
     public void SetTarget()
     {
+        Debug.Log(linkedObject.name);
         cam.GetComponent<CameraMvt>().target = linkedObject;
     }
 
