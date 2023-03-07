@@ -64,11 +64,11 @@ public class VectorField : MonoBehaviour
                         newPrefab.transform.position = new Vector3(-startCube.x + i*tranche, -startCube.y + j*tranche, -startCube.z + k*tranche);
                         Vector3 dir = GetVectorFromPos(newPrefab.transform.position);
                         newPrefab.transform.rotation = Quaternion.FromToRotation(Vector3.up, -dir);
-                        float vectorIntensity = dir.magnitude/10000000;
+                        float vectorIntensity = dir.magnitude/10000000000000000;
                         if (vectorIntensity >= 5)
-                            vectorIntensity = 0.01f;
+                            vectorIntensity = 0.1f;
                         Debug.Log(vectorIntensity);
-                        newPrefab.transform.localScale = new Vector3(vectorIntensity, vectorIntensity, vectorIntensity);
+                        newPrefab.transform.localScale = new Vector3(1, 1, 1);
                     }
                 }
             }
