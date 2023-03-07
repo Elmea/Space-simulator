@@ -19,11 +19,6 @@ public class VectorField : MonoBehaviour
         ShowVectorField();
     }
 
-    private void Update()
-    {
-        
-    }
-
     private Vector3 CalcPosInVectorField(Vector3 position)
     {
         return position - (transform.position * Planet.DistanceScale);

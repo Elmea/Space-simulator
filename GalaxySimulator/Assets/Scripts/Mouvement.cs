@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using Vector3 = UnityEngine.Vector3;
 
@@ -9,12 +10,16 @@ public class Mouvement : MonoBehaviour
     private Vector3 acceleration = new Vector3( 0.0f, 0.0f, 0.0f );
     private Vector3 newAcceleration = new Vector3( 0.0f, 0.0f, 0.0f );
     private static float dt = 36000.0f;
+    private List<VectorField> fields;
+    private TrailRenderer trail;
 
     // Start is called before the first frame update
     void Start()
     {
         velocity = GetMsSpeedFromKms(initialspeed);
         acceleration = new Vector3(0.0f, 0.0f, 0.0f);
+        fields = new List<VectorField>();
+        trail = GetComponent<TrailRenderer>();
     } 
 
     private Vector3 GetMsSpeedFromKms(Vector3 speedKms)
@@ -33,7 +38,7 @@ public class Mouvement : MonoBehaviour
 
         if (field)
         {
-            newAcceleration += field.GetVectorFromPos(transform.position * Planet.DistanceScale);
+            fields.Add(field);
         }
     }
     
@@ -44,17 +49,29 @@ public class Mouvement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Vector3 newPosition = (transform.position * Planet.DistanceScale + velocity * dt + acceleration * (dt * dt * 0.5f));
-        transform.position = newPosition / Planet.DistanceScale;
-    }
+        for (int iteration = 0; iteration < TimeManipulation.timeMultiplier; iteration++)
+        {
+            Vector3 newPosition = (transform.position * Planet.DistanceScale + velocity * dt + acceleration * (dt * dt * 0.5f));
+            transform.position = newPosition / Planet.DistanceScale;
 
-    void Update()
-    {
-        Vector3 newVelocity = velocity + (acceleration + newAcceleration) * (0.5f * dt);
-        velocity = newVelocity;
-        
-        acceleration = newAcceleration;
+            if (trail != null)
+            {
+                trail.AddPosition(transform.position);
+            }
 
-        newAcceleration = new Vector3(0, 0 , 0);
+            for (int i = 0; i < fields.Count; i++)
+            {
+                newAcceleration += fields[i].GetVectorFromPos(transform.position * Planet.DistanceScale);
+            }
+
+            Vector3 newVelocity = velocity + (acceleration + newAcceleration) * (0.5f * dt);
+            velocity = newVelocity;
+
+            acceleration = newAcceleration;
+
+            newAcceleration = new Vector3(0, 0, 0);
+
+        }
+        fields.Clear();
     }
 }

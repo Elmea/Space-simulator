@@ -10,16 +10,34 @@ public class Planet : MonoBehaviour
     public static float DistanceScale = (float)1.0e+9;
     
     private float rot;
+    private TrailRenderer trail;
+    private float trailBaseTime;
 
     void Start()
     {
         rot = 0;
+        trail = GetComponent<TrailRenderer>();
+        if (trail != null)
+            trailBaseTime = trail.time;
     }
 
     void Update()
     {       
         if (rotation)
             updateRot();
+
+        if (EventManager.IsTimeChanged() && trail != null)
+        {
+            if (TimeManipulation.timeMultiplier > 0)
+            {
+                trail.Clear();
+                trail.emitting = true;
+                if (TimeManipulation.timeMultiplier > 10)
+                    trail.time = 0.5f;
+                else
+                    trail.time = trailBaseTime;
+            }
+        }
     }
 
     void updateRot()
