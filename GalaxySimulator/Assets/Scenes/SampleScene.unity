@@ -3404,7 +3404,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
+  far clip plane: 100000
   field of view: 60
   orthographic: 0
   orthographic size: 5
@@ -6064,14 +6064,6 @@ PrefabInstance:
     - target: {fileID: 8090868213536984944, guid: 8684a25bbf623914e9c91759bb63151b, type: 3}
       propertyPath: m_Name
       value: Terre
-      objectReference: {fileID: 0}
-    - target: {fileID: 8090868213536984947, guid: 8684a25bbf623914e9c91759bb63151b, type: 3}
-      propertyPath: rotSpeed
-      value: 1.23
-      objectReference: {fileID: 0}
-    - target: {fileID: 8090868213536984947, guid: 8684a25bbf623914e9c91759bb63151b, type: 3}
-      propertyPath: inclinaisonAngle
-      value: 0.44
       objectReference: {fileID: 0}
     - target: {fileID: 8090868213536984951, guid: 8684a25bbf623914e9c91759bb63151b, type: 3}
       propertyPath: m_RootOrder
