@@ -18,9 +18,9 @@ public class CameraMvt : MonoBehaviour
 
     [HideInInspector] public GameObject target;
     Vector3 posFromTarget;    
-    float posXFromTarget=0;
-    float posYFromTarget=0;
-    float posZFromTarget=10;
+    Vector3 posXFromTarget = new Vector3(0,0,0);
+    Vector3 posYFromTarget = new Vector3(0,0,0);
+    Vector3 posZFromTarget = new Vector3(0,0,10);
 
     private void Update()
     {
@@ -64,25 +64,26 @@ public class CameraMvt : MonoBehaviour
     {
         transform.LookAt(target.transform);
 
-        posFromTarget = new Vector3(posXFromTarget,posYFromTarget,posZFromTarget);
+        Debug.Log(transform.forward);
+
+        posFromTarget = posXFromTarget + posYFromTarget +posZFromTarget;
 
         if (Input.GetKey(left))
-            posXFromTarget -= transform.right.x * speed;
+            posXFromTarget -= transform.right * speed;
         if (Input.GetKey(right))
-            posXFromTarget += transform.right.x * speed;
+            posXFromTarget += transform.right * speed;
     
         if (Input.GetKey(down))
-            posYFromTarget -= transform.up.y * speed;
+            posYFromTarget -= transform.up * speed;
         if (Input.GetKey(up))
-            posYFromTarget += transform.up.y * speed;
+            posYFromTarget += transform.up * speed;
 
         if (Input.GetKey(back))
-            posZFromTarget -= transform.forward.z * speed;
+            posZFromTarget -= transform.forward * speed;
         if (Input.GetKey(forward))
-            posZFromTarget += transform.forward.z * speed;
+            posZFromTarget += transform.forward * speed;
 
         transform.position = posFromTarget + target.transform.position;
-
     }
 
     private void CameraRotation()
