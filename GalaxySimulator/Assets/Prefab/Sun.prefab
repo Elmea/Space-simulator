@@ -131,10 +131,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aab46cb15597fa843918799f68fb1026, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Vector: {fileID: 0}
-  coteCubeVectorField: 0
-  showField: 0
-  VectorDensity: 0
+  Vector: {fileID: 3931998310565962668, guid: 7f27e4c617d146a4884229c2312cfbe9, type: 3}
+  coteCubeVectorField: 20
+  showField: 1
+  VectorDensity: 10
 --- !u!135 &3418595086502692062
 SphereCollider:
   m_ObjectHideFlags: 0
