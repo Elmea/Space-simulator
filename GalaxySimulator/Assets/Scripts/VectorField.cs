@@ -6,6 +6,8 @@ public class VectorField : MonoBehaviour
     [SerializeField] private GameObject Vector;
     [SerializeField] float coteCubeVectorField;
     [SerializeField] bool showField;
+    [SerializeField] float arrowSize = 1;
+
     [Range(0.0f, 50.0f)]
     public int VectorDensity;
 
@@ -62,7 +64,7 @@ public class VectorField : MonoBehaviour
                         Vector3 dir = GetVectorFromPos(newPrefab.transform.position);
                         newPrefab.transform.rotation = Quaternion.FromToRotation(Vector3.up, -dir);
 
-                        float vectorIntensity = dir.magnitude/(1.0e+14f);
+                        float vectorIntensity = dir.magnitude/(1.0e+14f) * arrowSize;
 
                         newPrefab.transform.localScale = new Vector3(vectorIntensity / transform.lossyScale.x, vectorIntensity / transform.lossyScale.y, vectorIntensity / transform.lossyScale.z);
                     }

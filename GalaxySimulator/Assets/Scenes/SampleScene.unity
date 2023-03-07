@@ -2464,6 +2464,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3418595086502692004, guid: 4e81cfc34fa0dc44282a227b394b3450, type: 3}
+      propertyPath: arrowSize
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3418595086502692007, guid: 4e81cfc34fa0dc44282a227b394b3450, type: 3}
       propertyPath: m_Name
       value: Sun
@@ -6087,6 +6091,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1468582410}
     m_Modifications:
+    - target: {fileID: -8282558007286412915, guid: 8684a25bbf623914e9c91759bb63151b, type: 3}
+      propertyPath: arrowSize
+      value: 1e+21
+      objectReference: {fileID: 0}
+    - target: {fileID: -8282558007286412915, guid: 8684a25bbf623914e9c91759bb63151b, type: 3}
+      propertyPath: showField
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8090868213536984944, guid: 8684a25bbf623914e9c91759bb63151b, type: 3}
       propertyPath: m_Name
       value: Terre
