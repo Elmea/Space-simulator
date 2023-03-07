@@ -44,7 +44,7 @@ public class Planet : MonoBehaviour
     {
         if (rot >= 360)
             rot = 0;
-        rot += rotSpeed * Time.deltaTime;
+        rot += rotSpeed * Time.deltaTime * TimeManipulation.timeMultiplier;
         transform.rotation = Quaternion.Euler(inclinaisonAngle, rot, 0);
     }
 

@@ -9,7 +9,7 @@ public class Mouvement : MonoBehaviour
     private Vector3 velocity = new Vector3( 0.0f, 0.0f, 0.0f );
     private Vector3 acceleration = new Vector3( 0.0f, 0.0f, 0.0f );
     private Vector3 newAcceleration = new Vector3( 0.0f, 0.0f, 0.0f );
-    private static float dt = 36000.0f;
+    private static float dt = 3600.0f;
     private List<VectorField> fields;
     private TrailRenderer trail;
 
