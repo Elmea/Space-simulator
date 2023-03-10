@@ -22,10 +22,16 @@ public class TimeManipulation : MonoBehaviour
         timeMultiplier = 10;
         EventManager.SetTimeChanged();
     }
+    
+    public void SetTimeReallyFast()
+    {
+        timeMultiplier = 100;
+        EventManager.SetTimeChanged();
+    }
 
     public void SetTimeFastest()
     {
-        timeMultiplier = 100;
+        timeMultiplier = 500;
         EventManager.SetTimeChanged();
     }
 
