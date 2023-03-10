@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 7531527686195130246}
   - component: {fileID: 7531527686195130265}
   - component: {fileID: 1787319111374257012}
+  - component: {fileID: -7624423371586470797}
   m_Layer: 0
   m_Name: Mars
   m_TagString: Untagged
@@ -254,3 +255,20 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
+--- !u!114 &-7624423371586470797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7531527686195130240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aab46cb15597fa843918799f68fb1026, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Vector: {fileID: 3931998310565962668, guid: 7f27e4c617d146a4884229c2312cfbe9, type: 3}
+  coteCubeVectorField: 0
+  showField: 0
+  arrowSize: 1
+  VectorDensity: 0
