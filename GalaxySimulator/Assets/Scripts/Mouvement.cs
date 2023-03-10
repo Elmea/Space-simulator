@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using Vector3 = UnityEngine.Vector3;
 
@@ -9,6 +10,7 @@ public class Mouvement : MonoBehaviour
     private Vector3 velocity = new Vector3( 0.0f, 0.0f, 0.0f );
     private Vector3 acceleration = new Vector3( 0.0f, 0.0f, 0.0f );
     private Vector3 newAcceleration = new Vector3( 0.0f, 0.0f, 0.0f );
+    private Vector3 newPosition = new Vector3( 0.0f, 0.0f, 0.0f );
     private static float dt = 3600.0f;
     private List<VectorField> fields;
     private TrailRenderer trail;
@@ -49,29 +51,32 @@ public class Mouvement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        float timeStep = dt * Time.fixedDeltaTime;
+        
         for (int iteration = 0; iteration < TimeManipulation.timeMultiplier; iteration++)
         {
-            Vector3 newPosition = (transform.position * Planet.DistanceScale + velocity * dt + acceleration * (dt * dt * 0.5f));
-            transform.position = newPosition / Planet.DistanceScale;
-
-            if (trail != null)
-            {
-                trail.AddPosition(transform.position);
-            }
+            newPosition = (transform.position * Planet.DistanceScale + velocity * timeStep +
+                           acceleration * (timeStep * timeStep * 0.5f));
 
             for (int i = 0; i < fields.Count; i++)
             {
-                newAcceleration += fields[i].GetVectorFromPos(transform.position * Planet.DistanceScale);
+                newAcceleration += fields[i].GetVectorFromPos(newPosition);
             }
 
-            Vector3 newVelocity = velocity + (acceleration + newAcceleration) * (0.5f * dt);
+            Vector3 newVelocity = velocity + (acceleration + newAcceleration) * (0.5f * timeStep);
             velocity = newVelocity;
 
             acceleration = newAcceleration;
 
             newAcceleration = new Vector3(0, 0, 0);
-
+            transform.position = newPosition / Planet.DistanceScale;
         }
+
+        if (trail != null)
+        {
+            trail.AddPosition(transform.position);
+        }
+        
         fields.Clear();
     }
 }

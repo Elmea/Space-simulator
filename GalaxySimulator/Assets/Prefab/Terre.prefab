@@ -116,8 +116,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotation: 1
   mass: 5.9736e+24
-  inclinaisonAngle: 0.44
-  rotSpeed: 1.23
+  inclinaisonAngle: 40
+  rotSpeed: 100
 --- !u!114 &8090868213536984950
 MonoBehaviour:
   m_ObjectHideFlags: 0

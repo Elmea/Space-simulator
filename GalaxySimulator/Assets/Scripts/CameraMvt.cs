@@ -22,9 +22,8 @@ public class CameraMvt : MonoBehaviour
     Vector3 posYFromTarget = new Vector3(0,0,0);
     Vector3 posZFromTarget = new Vector3(0,0,10);
 
-    private void Update()
+    private void FixedUpdate()
     {
-
         if(!cursor)
         {
             Vector3 newPos = transform.position;
