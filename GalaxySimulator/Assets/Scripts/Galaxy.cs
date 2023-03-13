@@ -17,7 +17,7 @@ public class Galaxy : MonoBehaviour
     [SerializeField] private GameObject galaxy;
     [SerializeField] private GameObject container;
 
-    private List<Mouvement> planetsMovement = new List<Mouvement>();
+    public List<Mouvement> planetsMovement = new List<Mouvement>();
 
     // Start is called before the first frame update
     void Start()
