@@ -34,5 +34,4 @@ public class TimeManipulation : MonoBehaviour
         timeMultiplier = 500;
         EventManager.SetTimeChanged();
     }
-
 }

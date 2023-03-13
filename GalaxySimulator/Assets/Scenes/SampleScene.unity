@@ -5668,6 +5668,7 @@ MonoBehaviour:
   mercuryPrefab: {fileID: 4091483955047809889, guid: c79d42e82171cda458fa45d3688180ae, type: 3}
   venusPrefab: {fileID: 8090868213536984944, guid: 2c3015e7c28453041aab7c85c4f1c32a, type: 3}
   earthPrefab: {fileID: 8090868213536984944, guid: 8684a25bbf623914e9c91759bb63151b, type: 3}
+  moonPrefab: {fileID: 4091483955047809889, guid: 7ad1245dabbe0a94e998a0505ccf9f60, type: 3}
   marsPrefab: {fileID: 7531527686195130240, guid: 3a7fd800a10f8b3449ef3dd7627c527e, type: 3}
   junoPrefab: {fileID: 6557527071751192835, guid: 81617eb8a6462594180e77083b834817, type: 3}
   objectSelectorButton: {fileID: 6322178688928169460, guid: 7b259dd622d7bd04681f4e4d73905453, type: 3}

@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class InitiateGalaxy : MonoBehaviour
 {
-
     [SerializeField] private GameObject sunPrefab;
     [SerializeField] private GameObject mercuryPrefab;
     [SerializeField] private GameObject venusPrefab;
     [SerializeField] private GameObject earthPrefab;
+    [SerializeField] private GameObject moonPrefab;   
     [SerializeField] private GameObject marsPrefab;
     [SerializeField] private GameObject junoPrefab;
 
@@ -72,6 +72,24 @@ public class InitiateGalaxy : MonoBehaviour
         newButton.GetComponent<SetCameraTarget>().linkedObject = venus;
         newButton.GetComponent<SetCameraTarget>().SetText(venus.name);
 
+        //Moon
+        
+        pos = new Vector3(0, 0.0843870671f, 152.479859f);
+        initialSpeed = new Vector3(30.261f, 0, 0);
+        inclinaisonAngle = 0;
+        rotSpeed = 0;
+
+        GameObject moon = Instantiate(moonPrefab);
+        moon.name = "Moon";
+        moon.transform.SetParent(galaxy.transform);
+        moon.GetComponent<Planet>().SetParameters(pos, mass, inclinaisonAngle, rotSpeed);
+        moon.GetComponent<Mouvement>().SetParameter(initialSpeed);
+            
+        newButton = Instantiate(objectSelectorButton);
+        newButton.transform.SetParent(container.transform);
+        newButton.GetComponent<SetCameraTarget>().linkedObject = moon;
+        newButton.GetComponent<SetCameraTarget>().SetText(moon.name);
+        
         //Earth
         pos = new Vector3(0, 0, 152.097f);
         initialSpeed = new Vector3(29.291f, 0, 0);
@@ -89,7 +107,6 @@ public class InitiateGalaxy : MonoBehaviour
         newButton.transform.SetParent(container.transform);
         newButton.GetComponent<SetCameraTarget>().linkedObject = earth;
         newButton.GetComponent<SetCameraTarget>().SetText(earth.name);
-
 
         //Mars
         pos = new Vector3(0, 0, 249.23f);
