@@ -14,7 +14,7 @@ public class Mouvement : MonoBehaviour
     private Vector3 newAcceleration = new Vector3( 0.0f, 0.0f, 0.0f );
     private Vector3 newPosition = new Vector3( 0.0f, 0.0f, 0.0f );
     private static float dt = 3600.0f;
-    private List<VectorField> fields;
+    private List<VectorField> fields = new List<VectorField>();
     private TrailRenderer trail;
     private LineRenderer lineRenderer;
     private bool firstFrame = true;
@@ -24,7 +24,6 @@ public class Mouvement : MonoBehaviour
     {
         velocity = GetMsSpeedFromKms(initialspeed);
         acceleration = new Vector3(0.0f, 0.0f, 0.0f);
-        fields = new List<VectorField>();
         trail = GetComponent<TrailRenderer>();
         lineRenderer = GetComponent<LineRenderer>();
         if (lineRenderer != null)
@@ -60,28 +59,25 @@ public class Mouvement : MonoBehaviour
         initialspeed = parInitialSpeed;
     }
 
-    private void FixedUpdate()
+    public void UpdatePosition()
     {
         float timeStep = dt * Time.fixedDeltaTime;
         
-        for (int iteration = 0; iteration < TimeManipulation.timeMultiplier; iteration++)
+        newPosition = (transform.position * Planet.DistanceScale + velocity * timeStep +
+                       acceleration * (timeStep * timeStep * 0.5f));
+
+        for (int i = 0; i < fields.Count; i++)
         {
-            newPosition = (transform.position * Planet.DistanceScale + velocity * timeStep +
-                           acceleration * (timeStep * timeStep * 0.5f));
-
-            for (int i = 0; i < fields.Count; i++)
-            {
-                newAcceleration += fields[i].GetVectorFromPos(newPosition);
-            }
-
-            Vector3 newVelocity = velocity + (acceleration + newAcceleration) * (0.5f * timeStep);
-            velocity = newVelocity;
-
-            acceleration = newAcceleration;
-
-            newAcceleration = new Vector3(0, 0, 0);
-            transform.position = newPosition / Planet.DistanceScale;
+            newAcceleration += fields[i].GetVectorFromPos(newPosition);
         }
+
+        Vector3 newVelocity = velocity + (acceleration + newAcceleration) * (0.5f * timeStep);
+        velocity = newVelocity;
+
+        acceleration = newAcceleration;
+
+        newAcceleration = new Vector3(0, 0, 0);
+        transform.position = newPosition / Planet.DistanceScale;
 
         if (trail != null)
         {
@@ -94,6 +90,10 @@ public class Mouvement : MonoBehaviour
             DrawOrbit();
         }
         
+    }
+
+    public void ClearFieldList()
+    {
         fields.Clear();
     }
 
