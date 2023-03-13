@@ -10,7 +10,7 @@ public class SetCameraTarget : MonoBehaviour
 
     public void SetTarget()
     {
-        Debug.Log(linkedObject.name);
+        //Debug.Log(linkedObject.name);
         cam.GetComponent<CameraMvt>().target = linkedObject;
     }
 

@@ -6,7 +6,8 @@ public class VectorField : MonoBehaviour
     private Planet planet;
     [SerializeField] private GameObject Vector;
     [SerializeField] float coteCubeVectorField;
-    [SerializeField] bool showField;
+    [SerializeField] public bool showField;
+    private bool UpdateShowField;
     [SerializeField] float arrowSize = 1;
 
     [Range(0.0f, 50.0f)]
@@ -16,10 +17,18 @@ public class VectorField : MonoBehaviour
     
     private void Start()
     {
-        showField = true;
+        showField = false;
         planet = GetComponent<Planet>();
-        //rayonPlanet = GetComponent<>
-        ShowVectorField();
+        
+    }
+
+    private void Update()
+    {
+        if(showField && UpdateShowField)
+        {
+            ShowVectorField();
+            UpdateShowField = false;
+        }
     }
 
     private Vector3 CalcPosInVectorField(Vector3 position)
@@ -50,7 +59,6 @@ public class VectorField : MonoBehaviour
         {
             float tranche = coteCubeVectorField / (VectorDensity);
             Vector3 startCube = new(coteCubeVectorField / 2 + transform.position.x, coteCubeVectorField / 2 + transform.position.y, coteCubeVectorField / 2 + transform.position.z);
-            //Debug.Log(startCube);
             
             for (int i = 0; i < VectorDensity + 1; i++)
             {
