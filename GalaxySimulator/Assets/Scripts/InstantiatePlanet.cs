@@ -31,6 +31,7 @@ public class InstantiatePlanet : MonoBehaviour
         float rotSpeed = 0;
         newPlanet.GetComponent<Planet>().SetParameters(pos, mass, inclinaisonAngle, rotSpeed);
         newPlanet.GetComponent<Mouvement>().SetParameter(initialSpeed);
+        galaxy.GetComponent<Galaxy>().planetsMovement.Add(newPlanet.GetComponent<Mouvement>());
 
         GameObject newButton = Instantiate(objectSelectorButton);
         newButton.transform.SetParent(container.transform);

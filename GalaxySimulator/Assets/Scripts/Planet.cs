@@ -18,7 +18,11 @@ public class Planet : MonoBehaviour
         rot = 0;
         trail = GetComponent<TrailRenderer>();
         if (trail != null)
+        {
             trailBaseTime = trail.time;
+            trail.startWidth = transform.lossyScale.x / 4;
+            trail.endWidth = 0;
+        }
     }
 
     void Update()
@@ -56,4 +60,6 @@ public class Planet : MonoBehaviour
         transform.position = position;
 
     }
+
+
 }
