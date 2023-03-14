@@ -133,9 +133,14 @@ public class Mouvement : MonoBehaviour
 
         int pointsToDraw = (int)orbitPeriod;
         float timeStep = dt * 5 ;
+
+        int pointAdded = 0;
         
         for (int iteration = 0; iteration < pointsToDraw; iteration++)
         {
+            if (nextPosition.magnitude <= 20.0f)
+                break;
+            
             nextNewPosition = (nextPosition * Planet.DistanceScale + nextVelocity * timeStep +
                                nextAcceleration * (timeStep * timeStep * 0.5f));
 
@@ -153,9 +158,10 @@ public class Mouvement : MonoBehaviour
             nextPosition = nextNewPosition / Planet.DistanceScale;
             
             points.Add(nextPosition);
+            pointAdded++;
         }
 
-        lineRenderer.positionCount = pointsToDraw;
+        lineRenderer.positionCount = pointAdded;
         lineRenderer.SetPositions(points.ToArray());
     }
 

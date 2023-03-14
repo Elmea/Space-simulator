@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Planet : MonoBehaviour
@@ -40,6 +41,27 @@ public class Planet : MonoBehaviour
                     trail.time = 0.5f;
                 else
                     trail.time = trailBaseTime;
+            }
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Planet other = collision.gameObject.GetComponent<Planet>();
+        if (other)
+        {
+            if (other.mass < mass)  
+            {
+                mass += other.mass;
+                GetComponentInParent<Galaxy>().planets.Remove(other.gameObject);
+                Destroy(other.gameObject);
+                
+            }
+            else
+            {
+                other.mass += mass;
+                GetComponentInParent<Galaxy>().planets.Remove(gameObject);
+                Destroy(gameObject);
             }
         }
     }
