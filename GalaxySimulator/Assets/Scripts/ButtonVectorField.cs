@@ -12,11 +12,11 @@ public class ButtonVectorField : MonoBehaviour
         showField = Camera.target.GetComponent<VectorField>().showField;
         if (showField)
         {
-            Camera.target.GetComponent<VectorField>().showField = false;
+            Camera.target.GetComponent<VectorField>().ShowVectorField(false);
         }
         else
         {
-            Camera.target.GetComponent<VectorField>().showField = true;
+            Camera.target.GetComponent<VectorField>().ShowVectorField(true);
         }
         Debug.Log(showField);
     }

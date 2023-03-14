@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
-
+using System;
+using System.Collections.Generic;
 public class VectorField : MonoBehaviour
 {
     private Planet planet;
@@ -9,6 +10,7 @@ public class VectorField : MonoBehaviour
     [SerializeField] public bool showField;
     private bool UpdateShowField;
     [SerializeField] float arrowSize = 1;
+    List<GameObject> vectorField = new List<GameObject>();
 
     [Range(0.0f, 50.0f)]
     public int VectorDensity;
@@ -17,25 +19,23 @@ public class VectorField : MonoBehaviour
     
     private void Start()
     {
-        showField = false;
+        //showField = false;
         planet = GetComponent<Planet>();
-        
-    }
-
-    private void Update()
-    {
-        if(showField && UpdateShowField)
+        if(showField)
         {
-            ShowVectorField();
-            UpdateShowField = false;
+            CreateVectorField();
         }
+        ShowVectorField(showField);
+        
     }
 
     private Vector3 CalcPosInVectorField(Vector3 position)
     {
-        return position - (transform.position * Planet.DistanceScale);
+
+        Vector3 test = (position - (transform.position * Planet.DistanceScale));
+        //Debug.Log(test);
+        return test;
     }
-    
     private Vector3 GetVector(Vector3 positionInField)
     {
         float distance = positionInField.magnitude;
@@ -48,37 +48,55 @@ public class VectorField : MonoBehaviour
     
     public Vector3 GetVectorFromPos(Vector3 position)
     {
-        Vector3 posInField = CalcPosInVectorField(position); 
-        
+        Vector3 posInField = CalcPosInVectorField(position);
         return GetVector(posInField);
     }
 
-    private void ShowVectorField()
+    public void CreateVectorField()
     {
-        if (showField)
+        float tranche = coteCubeVectorField / (VectorDensity);
+        Vector3 startCube = new(coteCubeVectorField / 2 + transform.position.x, coteCubeVectorField / 2 + transform.position.y, coteCubeVectorField / 2 + transform.position.z);
+
+        for (int i = 0; i < VectorDensity + 1; i++)
         {
-            float tranche = coteCubeVectorField / (VectorDensity);
-            Vector3 startCube = new(coteCubeVectorField / 2 + transform.position.x, coteCubeVectorField / 2 + transform.position.y, coteCubeVectorField / 2 + transform.position.z);
-            
-            for (int i = 0; i < VectorDensity + 1; i++)
+            for (int j = 0; j < VectorDensity + 1; j++)
             {
-                for(int j = 0; j < VectorDensity + 1; j++)
+                for (int k = 0; k < VectorDensity + 1; k++)
                 {
-                    for(int k = 0; k < VectorDensity + 1; k++)  
+                    GameObject newPrefab = Instantiate(Vector);
+                    newPrefab.transform.parent = this.gameObject.transform;
+
+                    newPrefab.transform.localPosition = new Vector3(-startCube.x + i * tranche, -startCube.y + j * tranche, -startCube.z + k * tranche) + transform.position;
+                    Vector3 dir = GetVectorFromPos(newPrefab.transform.position * Planet.DistanceScale);
+                    
+                    
+                    newPrefab.transform.rotation = Quaternion.FromToRotation(Vector3.up, -dir);
+
+                    float vectorIntensity = dir.magnitude / (1.0e+14f) * arrowSize;
+                    if(newPrefab.transform.localPosition.sqrMagnitude < 10)
                     {
-                        GameObject newPrefab = Instantiate(Vector);
-                        newPrefab.transform.parent = this.gameObject.transform;
-
-                        newPrefab.transform.localPosition = new Vector3(-startCube.x + i * tranche, -startCube.y + j * tranche, -startCube.z + k * tranche) + gameObject.transform.position;
-                        Vector3 dir = GetVectorFromPos(newPrefab.transform.position);
-                        newPrefab.transform.rotation = Quaternion.FromToRotation(Vector3.up, -dir);
-
-                        float vectorIntensity = dir.magnitude/(1.0e+14f) * arrowSize;
-
+                        newPrefab.transform.localScale = new Vector3(0, 0, 0);
+                        //Debug.Log(newPrefab.transform.localPosition.sqrMagnitude);
+                    }
+                    else
+                    { 
                         newPrefab.transform.localScale = new Vector3(vectorIntensity / transform.lossyScale.x, vectorIntensity / transform.lossyScale.y, vectorIntensity / transform.lossyScale.z);
                     }
+                    //newPrefab.transform.localScale = new Vector3(1,1,1);
+
+                    vectorField.Add(newPrefab);
                 }
             }
         }
     }
+
+    public void ShowVectorField(bool test)
+    {
+        foreach (GameObject vector in vectorField)
+        {
+            vector.SetActive(test);
+        }
+        showField = test;
+    }
+        
 }
