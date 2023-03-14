@@ -32,8 +32,8 @@ public class VectorField : MonoBehaviour
     private Vector3 CalcPosInVectorField(Vector3 position)
     {
 
-        Vector3 test = (position - (transform.localPosition * Planet.DistanceScale));
-        Debug.Log(test);
+        Vector3 test = (position - (transform.position * Planet.DistanceScale));
+        //Debug.Log(test);
         return test;
     }
     private Vector3 GetVector(Vector3 positionInField)
@@ -67,14 +67,22 @@ public class VectorField : MonoBehaviour
                     newPrefab.transform.parent = this.gameObject.transform;
 
                     newPrefab.transform.localPosition = new Vector3(-startCube.x + i * tranche, -startCube.y + j * tranche, -startCube.z + k * tranche) + transform.position;
-                    Vector3 dir = GetVectorFromPos(newPrefab.transform.position);
-                    //Debug.Log(newPrefab.transform.position);
+                    Vector3 dir = GetVectorFromPos(newPrefab.transform.position * Planet.DistanceScale);
+                    
                     
                     newPrefab.transform.rotation = Quaternion.FromToRotation(Vector3.up, -dir);
 
                     float vectorIntensity = dir.magnitude / (1.0e+14f) * arrowSize;
-
-                    newPrefab.transform.localScale = new Vector3(vectorIntensity / transform.lossyScale.x, vectorIntensity / transform.lossyScale.y, vectorIntensity / transform.lossyScale.z);
+                    if(newPrefab.transform.localPosition.sqrMagnitude < 10)
+                    {
+                        newPrefab.transform.localScale = new Vector3(0, 0, 0);
+                        //Debug.Log(newPrefab.transform.localPosition.sqrMagnitude);
+                    }
+                    else
+                    { 
+                        newPrefab.transform.localScale = new Vector3(vectorIntensity / transform.lossyScale.x, vectorIntensity / transform.lossyScale.y, vectorIntensity / transform.lossyScale.z);
+                    }
+                    //newPrefab.transform.localScale = new Vector3(1,1,1);
 
                     vectorField.Add(newPrefab);
                 }
