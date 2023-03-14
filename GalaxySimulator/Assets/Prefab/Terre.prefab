@@ -133,7 +133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialspeed: {x: 29.291, y: 0, z: 0}
-  calcOrbitLineEach: 2
+  calcOrbitLineEach: 0
 --- !u!54 &8090868213536984937
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -54,13 +54,14 @@ public class Planet : MonoBehaviour
             {
                 mass += other.mass;
                 GetComponentInParent<Galaxy>().planets.Remove(other.gameObject);
+                GetComponentInParent<EventManager>().explosionEvent.Add(new EventExplosion(collision.GetContact(0).point, other.transform.lossyScale));
                 Destroy(other.gameObject);
-                
             }
             else
             {
                 other.mass += mass;
                 GetComponentInParent<Galaxy>().planets.Remove(gameObject);
+                GetComponentInParent<EventManager>().explosionEvent.Add(new EventExplosion(collision.GetContact(0).point, transform.lossyScale));
                 Destroy(gameObject);
             }
         }

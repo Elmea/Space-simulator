@@ -18,8 +18,11 @@ public class Galaxy : MonoBehaviour
     [SerializeField] private GameObject galaxy;
     [SerializeField] private GameObject container;
     [SerializeField] private Camera camera;
+    [SerializeField] private GameObject ExplosionPrefab;
 
     public List<GameObject> planets = new List<GameObject>();
+
+    private List<GameObject> explosions = new List<GameObject>();
 
     // Start is called before the first frame update
     void Start()
@@ -168,6 +171,8 @@ public class Galaxy : MonoBehaviour
                 planet.GetComponent<Mouvement>().UpdatePosition();
             }
         }
+
+        Mouvement.SunPos = planets[0].transform.position;
     }
 
     private void Update()
@@ -181,5 +186,12 @@ public class Galaxy : MonoBehaviour
                 line.endWidth = line.startWidth;
             }
         }
+
+        foreach (EventExplosion explosion in GetComponent<EventManager>().explosionEvent)
+        {
+            GameObject newOne = Instantiate(ExplosionPrefab);
+            newOne.transform.position = explosion.position;
+            newOne.transform.localScale = explosion.scale;
+        }   
     }
 }

@@ -11,6 +11,8 @@ public class Mouvement : MonoBehaviour
     [SerializeField] Vector3 initialspeed;
     [SerializeField] float calcOrbitLineEach = 5.0f;
 
+    public static Vector3 SunPos;
+    
     private Vector3 velocity = new Vector3( 0.0f, 0.0f, 0.0f );
     private Vector3 acceleration = new Vector3( 0.0f, 0.0f, 0.0f );
     private Vector3 newAcceleration = new Vector3( 0.0f, 0.0f, 0.0f );
@@ -138,7 +140,7 @@ public class Mouvement : MonoBehaviour
         
         for (int iteration = 0; iteration < pointsToDraw; iteration++)
         {
-            if (nextPosition.magnitude <= 20.0f)
+            if ((nextPosition - SunPos).magnitude <= 20.0f)
                 break;
             
             nextNewPosition = (nextPosition * Planet.DistanceScale + nextVelocity * timeStep +
