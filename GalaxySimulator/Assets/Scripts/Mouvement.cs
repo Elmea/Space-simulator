@@ -71,17 +71,20 @@ public class Mouvement : MonoBehaviour
 
     private void Update()
     {
-        if (lineRenderer.enabled = true && fields.Count > 0)
+        if (lineRenderer)
         {
-            if (orbitLneCalcTimer <= 0.0f)
+            if (lineRenderer.enabled = true && fields.Count > 0)
             {
-                ResetOrbitLine();
-                CalcOrbitLine();
-                orbitLneCalcTimer = calcOrbitLineEach;
-            }
-            else
-            {
-                orbitLneCalcTimer -= Time.deltaTime;
+                if (orbitLneCalcTimer <= 0.0f)
+                {
+                    ResetOrbitLine();
+                    CalcOrbitLine();
+                    orbitLneCalcTimer = calcOrbitLineEach;
+                }
+                else
+                {
+                    orbitLneCalcTimer -= Time.deltaTime;
+                }
             }
         }
     }
@@ -106,15 +109,10 @@ public class Mouvement : MonoBehaviour
         newAcceleration = new Vector3(0, 0, 0);
         transform.position = newPosition / Planet.DistanceScale;
 
-        if (trail != null)
+        if (trail)
         {
             trail.AddPosition(transform.position);
         }
-    }
-
-    public void ClearFieldList()
-    {
-        fields.Clear();
     }
 
     private void CalcOrbitLine()
@@ -174,8 +172,11 @@ public class Mouvement : MonoBehaviour
     
     public void DrawOrbit()
     {
-        ResetOrbitLine();
-        CalcOrbitLine();
         lineRenderer.enabled = true;
+    }
+    
+    public void HideOrbit()
+    {
+        lineRenderer.enabled = false;
     }
 }
