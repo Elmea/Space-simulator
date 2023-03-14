@@ -84,7 +84,7 @@ public class CameraMvt : MonoBehaviour
 
         transform.position = posFromTarget + target.transform.position;
     }
-
+    
     private void CameraRotation()
     {
         Cursor.visible = false;
