@@ -239,6 +239,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialspeed: {x: 38.86, y: 0, z: 0}
+  calcOrbitLineEach: 0
 --- !u!54 &4091483955047809945
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -275,7 +276,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 2561ef3309a407447980d69cf38e2388, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

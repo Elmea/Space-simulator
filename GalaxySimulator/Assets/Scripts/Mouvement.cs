@@ -9,6 +9,8 @@ using Vector3 = UnityEngine.Vector3;
 public class Mouvement : MonoBehaviour
 {
     [SerializeField] Vector3 initialspeed;
+    [SerializeField] float calcOrbitLineEach = 5.0f;
+
     private Vector3 velocity = new Vector3( 0.0f, 0.0f, 0.0f );
     private Vector3 acceleration = new Vector3( 0.0f, 0.0f, 0.0f );
     private Vector3 newAcceleration = new Vector3( 0.0f, 0.0f, 0.0f );
@@ -18,6 +20,7 @@ public class Mouvement : MonoBehaviour
     private TrailRenderer trail;
     private LineRenderer lineRenderer;
     private bool firstFrame = true;
+    private float orbitLneCalcTimer = 0.0f;
     
     // Start is called before the first frame update
     void Start()
@@ -59,6 +62,28 @@ public class Mouvement : MonoBehaviour
         initialspeed = parInitialSpeed;
     }
 
+    private void FixedUpdate()
+    {
+        fields.Clear();
+    }
+
+    private void Update()
+    {
+        if (lineRenderer.enabled = true && fields.Count > 0)
+        {
+            if (orbitLneCalcTimer <= 0.0f)
+            {
+                ResetOrbitLine();
+                CalcOrbitLine();
+                orbitLneCalcTimer = calcOrbitLineEach;
+            }
+            else
+            {
+                orbitLneCalcTimer -= Time.deltaTime;
+            }
+        }
+    }
+
     public void UpdatePosition()
     {
         float timeStep = dt * Time.fixedDeltaTime;
@@ -83,13 +108,6 @@ public class Mouvement : MonoBehaviour
         {
             trail.AddPosition(transform.position);
         }
-
-        if (firstFrame && fields.Count > 0)
-        {
-            firstFrame = false;
-            DrawOrbit();
-        }
-        
     }
 
     public void ClearFieldList()
@@ -115,9 +133,14 @@ public class Mouvement : MonoBehaviour
 
         int pointsToDraw = (int)orbitPeriod;
         float timeStep = dt * 5 ;
+
+        int pointAdded = 0;
         
         for (int iteration = 0; iteration < pointsToDraw; iteration++)
         {
+            if (nextPosition.magnitude <= 20.0f)
+                break;
+            
             nextNewPosition = (nextPosition * Planet.DistanceScale + nextVelocity * timeStep +
                                nextAcceleration * (timeStep * timeStep * 0.5f));
 
@@ -135,12 +158,13 @@ public class Mouvement : MonoBehaviour
             nextPosition = nextNewPosition / Planet.DistanceScale;
             
             points.Add(nextPosition);
+            pointAdded++;
         }
 
-        lineRenderer.positionCount = pointsToDraw;
+        lineRenderer.positionCount = pointAdded;
         lineRenderer.SetPositions(points.ToArray());
     }
-    
+
     private void ResetOrbitLine()
     {
         lineRenderer.positionCount = 0;
@@ -148,6 +172,8 @@ public class Mouvement : MonoBehaviour
     
     public void DrawOrbit()
     {
+        ResetOrbitLine();
         CalcOrbitLine();
+        lineRenderer.enabled = true;
     }
 }

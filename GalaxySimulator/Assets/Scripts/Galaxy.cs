@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Galaxy : MonoBehaviour
@@ -16,8 +17,9 @@ public class Galaxy : MonoBehaviour
     [SerializeField] private GameObject objectSelectorButton;
     [SerializeField] private GameObject galaxy;
     [SerializeField] private GameObject container;
+    [SerializeField] private Camera camera;
 
-    public List<Mouvement> planetsMovement = new List<Mouvement>();
+    public List<GameObject> planets = new List<GameObject>();
 
     // Start is called before the first frame update
     void Start()
@@ -34,7 +36,7 @@ public class Galaxy : MonoBehaviour
         sun.transform.SetParent(galaxy.transform);
         sun.GetComponent<Planet>().SetParameters(pos, mass, inclinaisonAngle, rotSpeed);
         sun.GetComponent<Mouvement>().SetParameter(initialSpeed);
-        planetsMovement.Add(sun.GetComponent<Mouvement>());
+        planets.Add(sun);
         
         GameObject newButton = Instantiate(objectSelectorButton);
         newButton.transform.SetParent(container.transform);
@@ -53,7 +55,7 @@ public class Galaxy : MonoBehaviour
         mercury.transform.SetParent(galaxy.transform);
         mercury.GetComponent<Planet>().SetParameters(pos, mass, inclinaisonAngle, rotSpeed);
         mercury.GetComponent<Mouvement>().SetParameter(initialSpeed);
-        planetsMovement.Add(mercury.GetComponent<Mouvement>());
+        planets.Add(mercury);
 
         newButton = Instantiate(objectSelectorButton);
         newButton.transform.SetParent(container.transform);
@@ -72,7 +74,7 @@ public class Galaxy : MonoBehaviour
         venus.transform.SetParent(galaxy.transform);
         venus.GetComponent<Planet>().SetParameters(pos, mass, inclinaisonAngle, rotSpeed);
         venus.GetComponent<Mouvement>().SetParameter(initialSpeed);
-        planetsMovement.Add(venus.GetComponent<Mouvement>());
+        planets.Add(venus);
 
         newButton = Instantiate(objectSelectorButton);
         newButton.transform.SetParent(container.transform);
@@ -91,7 +93,7 @@ public class Galaxy : MonoBehaviour
         moon.transform.SetParent(galaxy.transform);
         moon.GetComponent<Planet>().SetParameters(pos, mass, inclinaisonAngle, rotSpeed);
         moon.GetComponent<Mouvement>().SetParameter(initialSpeed);
-        planetsMovement.Add(moon.GetComponent<Mouvement>());
+        planets.Add(moon);
 
         newButton = Instantiate(objectSelectorButton);
         newButton.transform.SetParent(container.transform);
@@ -110,7 +112,7 @@ public class Galaxy : MonoBehaviour
         earth.transform.SetParent(galaxy.transform);
         earth.GetComponent<Planet>().SetParameters(pos, mass, inclinaisonAngle, rotSpeed);
         earth.GetComponent<Mouvement>().SetParameter(initialSpeed);
-        planetsMovement.Add(earth.GetComponent<Mouvement>());
+        planets.Add(earth);
 
         newButton = Instantiate(objectSelectorButton);
         newButton.transform.SetParent(container.transform);
@@ -129,7 +131,7 @@ public class Galaxy : MonoBehaviour
         mars.transform.SetParent(galaxy.transform);
         mars.GetComponent<Planet>().SetParameters(pos, mass, inclinaisonAngle, rotSpeed);
         mars.GetComponent<Mouvement>().SetParameter(initialSpeed);
-        planetsMovement.Add(mars.GetComponent<Mouvement>());
+        planets.Add(mars);
 
         newButton = Instantiate(objectSelectorButton);
         newButton.transform.SetParent(container.transform);
@@ -148,7 +150,7 @@ public class Galaxy : MonoBehaviour
         juno.transform.SetParent(galaxy.transform);
         juno.GetComponent<Planet>().SetParameters(pos, mass, inclinaisonAngle, rotSpeed);
         juno.GetComponent<Mouvement>().SetParameter(initialSpeed);
-        planetsMovement.Add(juno.GetComponent<Mouvement>());
+        planets.Add(juno);
 
         newButton = Instantiate(objectSelectorButton);
         newButton.transform.SetParent(container.transform);
@@ -159,14 +161,25 @@ public class Galaxy : MonoBehaviour
 
     private void FixedUpdate()
     {
-        foreach (Mouvement planet in planetsMovement)
+        for (int iteration = 0; iteration < TimeManipulation.timeMultiplier; iteration++)
         {
-            for (int iteration = 0; iteration < TimeManipulation.timeMultiplier; iteration++)
+            foreach (GameObject planet in planets)
             {
-                planet.UpdatePosition();
+                planet.GetComponent<Mouvement>().UpdatePosition();
             }
-            
-            planet.ClearFieldList();
+        }
+    }
+
+    private void Update()
+    {
+        foreach (GameObject planet in planets)
+        {
+            LineRenderer line = planet.GetComponent<LineRenderer>();
+            if (line)
+            {
+                line.startWidth = (planet.transform.position - camera.transform.position).magnitude / 1000.0f;
+                line.endWidth = line.startWidth;
+            }
         }
     }
 }
