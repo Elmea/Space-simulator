@@ -3915,7 +3915,7 @@ MonoBehaviour:
   forward: 119
   back: 115
   hideCursor: 324
-  speed: 0.25
+  speed: 0.1
   mouseSensitivity: 2
   target: {fileID: 0}
 --- !u!1 &1019548667

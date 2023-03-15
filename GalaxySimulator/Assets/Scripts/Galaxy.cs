@@ -56,7 +56,7 @@ public class Galaxy : MonoBehaviour
         GameObject mercury = Instantiate(mercuryPrefab);
         mercury.name = "Mercury";
         mercury.transform.SetParent(galaxy.transform);
-        mercury.GetComponent<Planet>().SetParameters(pos, mass, inclinaisonAngle, rotSpeed);
+        mercury.GetComponent<Planet>().SetParameters(pos, mass, inclinaisonAngle, rotSpeed, 0.4589f);
         mercury.GetComponent<Mouvement>().SetParameter(initialSpeed);
         planets.Add(mercury);
 
@@ -75,8 +75,9 @@ public class Galaxy : MonoBehaviour
         GameObject venus = Instantiate(venusPrefab);
         venus.name = "Venus";
         venus.transform.SetParent(galaxy.transform);
-        venus.GetComponent<Planet>().SetParameters(pos, mass, inclinaisonAngle, rotSpeed);
+        venus.GetComponent<Planet>().SetParameters(pos, mass, inclinaisonAngle, rotSpeed, 0.7162f);
         venus.GetComponent<Mouvement>().SetParameter(initialSpeed);
+
         planets.Add(venus);
 
         newButton = Instantiate(objectSelectorButton);
@@ -84,25 +85,6 @@ public class Galaxy : MonoBehaviour
         newButton.GetComponent<SetCameraTarget>().linkedObject = venus;
         newButton.GetComponent<SetCameraTarget>().SetText(venus.name);
 
-        //Moon
-        
-        pos = new Vector3(0, 0.0843870671f, 152.479859f);
-        initialSpeed = new Vector3(30.261f, 0, 0);
-        inclinaisonAngle = 0;
-        rotSpeed = 0;
-
-        GameObject moon = Instantiate(moonPrefab);
-        moon.name = "Moon";
-        moon.transform.SetParent(galaxy.transform);
-        moon.GetComponent<Planet>().SetParameters(pos, mass, inclinaisonAngle, rotSpeed);
-        moon.GetComponent<Mouvement>().SetParameter(initialSpeed);
-        planets.Add(moon);
-
-        newButton = Instantiate(objectSelectorButton);
-        newButton.transform.SetParent(container.transform);
-        newButton.GetComponent<SetCameraTarget>().linkedObject = moon;
-        newButton.GetComponent<SetCameraTarget>().SetText(moon.name);
-        
         //Earth
         pos = new Vector3(0, 0, 152.097f);
         initialSpeed = new Vector3(29.291f, 0, 0);
@@ -113,15 +95,35 @@ public class Galaxy : MonoBehaviour
         GameObject earth = Instantiate(earthPrefab);
         earth.name = "Earth";
         earth.transform.SetParent(galaxy.transform);
-        earth.GetComponent<Planet>().SetParameters(pos, mass, inclinaisonAngle, rotSpeed);
+        earth.GetComponent<Planet>().SetParameters(pos, mass, inclinaisonAngle, rotSpeed, 1.0f);
         earth.GetComponent<Mouvement>().SetParameter(initialSpeed);
+
         planets.Add(earth);
 
         newButton = Instantiate(objectSelectorButton);
         newButton.transform.SetParent(container.transform);
         newButton.GetComponent<SetCameraTarget>().linkedObject = earth;
         newButton.GetComponent<SetCameraTarget>().SetText(earth.name);
+        
+        //Moon
+        pos = new Vector3(0, 0.0843870671f, 152.479859f);
+        initialSpeed = new Vector3(30.261f, 0, 0);
+        inclinaisonAngle = 0;
+        rotSpeed = 0;
 
+        GameObject moon = Instantiate(moonPrefab);
+        moon.name = "Moon";
+        moon.transform.SetParent(galaxy.transform);
+        moon.GetComponent<Planet>().SetParameters(pos, mass, inclinaisonAngle, rotSpeed);
+        moon.GetComponent<Mouvement>().SetParameter(initialSpeed);
+        moon.GetComponent<Mouvement>().IsMoonOf = earth;
+        planets.Add(moon);
+
+        newButton = Instantiate(objectSelectorButton);
+        newButton.transform.SetParent(container.transform);
+        newButton.GetComponent<SetCameraTarget>().linkedObject = moon;
+        newButton.GetComponent<SetCameraTarget>().SetText(moon.name);
+        
         //Mars
         pos = new Vector3(0, 0, 249.23f);
         initialSpeed = new Vector3(21.975f, 0, 0);
@@ -132,7 +134,7 @@ public class Galaxy : MonoBehaviour
         GameObject mars = Instantiate(marsPrefab);
         mars.name = "Mars";
         mars.transform.SetParent(galaxy.transform);
-        mars.GetComponent<Planet>().SetParameters(pos, mass, inclinaisonAngle, rotSpeed);
+        mars.GetComponent<Planet>().SetParameters(pos, mass, inclinaisonAngle, rotSpeed, 1.6386f);
         mars.GetComponent<Mouvement>().SetParameter(initialSpeed);
         planets.Add(mars);
 
@@ -151,7 +153,7 @@ public class Galaxy : MonoBehaviour
         GameObject juno = Instantiate(junoPrefab);
         juno.name = "Juno";
         juno.transform.SetParent(galaxy.transform);
-        juno.GetComponent<Planet>().SetParameters(pos, mass, inclinaisonAngle, rotSpeed);
+        juno.GetComponent<Planet>().SetParameters(pos, mass, inclinaisonAngle, rotSpeed, 5.3649f);
         juno.GetComponent<Mouvement>().SetParameter(initialSpeed);
         planets.Add(juno);
 

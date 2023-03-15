@@ -9,8 +9,9 @@ using Vector3 = UnityEngine.Vector3;
 public class Mouvement : MonoBehaviour
 {
     [SerializeField] Vector3 initialspeed;
-    [SerializeField] float calcOrbitLineEach = 5.0f;
+    [SerializeField] float calcOrbitLineEach = 0.0f;
 
+    public GameObject IsMoonOf;
     public static Vector3 SunPos;
     
     private Vector3 velocity = new Vector3( 0.0f, 0.0f, 0.0f );
@@ -23,6 +24,7 @@ public class Mouvement : MonoBehaviour
     private LineRenderer lineRenderer;
     private bool firstFrame = true;
     private float orbitLneCalcTimer = 0.0f;
+    private VectorField centerOfOrbitField; // Only used for orbit line calc
     
     // Start is called before the first frame update
     void Start()
@@ -36,6 +38,9 @@ public class Mouvement : MonoBehaviour
             lineRenderer.startWidth = transform.lossyScale.x / 4;
             lineRenderer.endWidth = 0;
         }
+
+        if (IsMoonOf)
+            centerOfOrbitField = IsMoonOf.GetComponent<VectorField>();
     } 
 
     private Vector3 GetMsSpeedFromKms(Vector3 speedKms)
@@ -128,13 +133,17 @@ public class Mouvement : MonoBehaviour
         Vector3 nextNewPosition = new Vector3( 0.0f, 0.0f, 0.0f );
 
         List<Vector3> points = new List<Vector3>();
-
-        float orbitPeriod = (2 * Mathf.PI * transform.position.magnitude * velocity.magnitude) / 3600;
-
-        int pointsToDraw = (int)orbitPeriod;
         float timeStep = dt * 5 ;
-
         int pointAdded = 0;
+
+        if (IsMoonOf)
+        {
+            nextVelocity -= IsMoonOf.GetComponent<Mouvement>().velocity;
+            nextAcceleration = centerOfOrbitField.GetVectorFromPos(nextNewPosition);
+        }
+
+        float orbitPeriod = ((Mathf.PI * transform.position.magnitude * nextVelocity.magnitude) / 3600) * GetComponent<Planet>().ua;
+        int pointsToDraw = (int)orbitPeriod;
         
         for (int iteration = 0; iteration < pointsToDraw; iteration++)
         {
@@ -144,9 +153,16 @@ public class Mouvement : MonoBehaviour
             nextNewPosition = (nextPosition * Planet.DistanceScale + nextVelocity * timeStep +
                                nextAcceleration * (timeStep * timeStep * 0.5f));
 
-            for (int i = 0; i < fields.Count; i++)
+            if (IsMoonOf)
             {
-                nextNewAcceleration += fields[i].GetVectorFromPos(nextNewPosition);
+                nextNewAcceleration = centerOfOrbitField.GetVectorFromPos(nextNewPosition);
+            }
+            else
+            {
+                for (int i = 0; i < fields.Count; i++)
+                {
+                    nextNewAcceleration += fields[i].GetVectorFromPos(nextNewPosition);
+                }
             }
 
             Vector3 newVelocity = nextVelocity + (nextAcceleration + nextNewAcceleration) * (0.5f * timeStep);

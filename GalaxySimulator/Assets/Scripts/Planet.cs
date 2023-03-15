@@ -9,6 +9,8 @@ public class Planet : MonoBehaviour
     [SerializeField] float rotSpeed;
     
     public static float DistanceScale = (float)1.0e+9;
+
+    public float ua = 1;
     
     private float rot;
     private TrailRenderer trail;
@@ -75,14 +77,12 @@ public class Planet : MonoBehaviour
         transform.rotation = Quaternion.Euler(inclinaisonAngle, rot, 0);
     }
 
-    public void SetParameters(Vector3 position , float mass, float inclinaisonAngle, float rotSpeed)
+    public void SetParameters(Vector3 position , float mass, float inclinaisonAngle, float rotSpeed, float ua = 1.0f)
     {
         this.mass = mass;
         this.inclinaisonAngle = inclinaisonAngle;
         this.rotSpeed = rotSpeed;
+        this.ua = ua;
         transform.position = position;
-
     }
-
-
 }
