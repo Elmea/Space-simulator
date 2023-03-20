@@ -6,6 +6,7 @@ public class EventManager : MonoBehaviour
 {
 
     public List<EventExplosion> explosionEvent = new List<EventExplosion>();
+    public List<NewVesselEvent> newVesselEvents = new List<NewVesselEvent>();
 
     #region timeChanged
     static private bool timeChanged;
@@ -25,6 +26,7 @@ public class EventManager : MonoBehaviour
     {
         timeChanged = false;
         explosionEvent.Clear();
+        newVesselEvents.Clear();
     }
 }
 
@@ -37,5 +39,15 @@ public class EventExplosion
     {
         this.position = position;
         this.scale = scale;
+    }
+}
+
+public class NewVesselEvent
+{
+    public GameObject vessel;
+
+    public NewVesselEvent(GameObject vessel)
+    {
+        this.vessel = vessel;
     }
 }

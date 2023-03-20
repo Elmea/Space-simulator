@@ -118,6 +118,7 @@ MonoBehaviour:
   mass: 6.4185e+23
   inclinaisonAngle: 0
   rotSpeed: 0
+  ua: 1.6386
 --- !u!114 &7531527686195130246
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -132,6 +133,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialspeed: {x: 21.975, y: 0, z: 0}
   calcOrbitLineEach: 0
+  IsMoonOf: {fileID: 0}
 --- !u!54 &7531527686195130265
 Rigidbody:
   m_ObjectHideFlags: 0

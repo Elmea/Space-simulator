@@ -67,6 +67,16 @@ public class Planet : MonoBehaviour
                 Destroy(gameObject);
             }
         }
+        else
+        {
+            Vessel vessel = collision.gameObject.GetComponent<Vessel>();
+            if (vessel)
+            {
+                GetComponentInParent<Galaxy>().planets.Remove(vessel.gameObject);
+                GetComponentInParent<EventManager>().explosionEvent.Add(new EventExplosion(collision.GetContact(0).point, vessel.transform.lossyScale));
+                Destroy(vessel.gameObject);
+            }
+        }
     }
 
     void updateRot()
@@ -77,7 +87,7 @@ public class Planet : MonoBehaviour
         transform.rotation = Quaternion.Euler(inclinaisonAngle, rot, 0);
     }
 
-    public void SetParameters(Vector3 position , float mass, float inclinaisonAngle, float rotSpeed, float ua = 1.0f)
+    public void SetParameters(Vector3 position , float mass, float inclinaisonAngle, float rotSpeed)
     {
         this.mass = mass;
         this.inclinaisonAngle = inclinaisonAngle;

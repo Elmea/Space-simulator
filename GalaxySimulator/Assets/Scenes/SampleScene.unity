@@ -5921,6 +5921,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 975711706ba2b184e886f2eedb303989, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  InstanciateVessel: 116
+  vesselPrefab: {fileID: 4116306908132571087, guid: 2197bb1ff6c2df04ebbae91804af7628, type: 3}
   sunPrefab: {fileID: 3418595086502692007, guid: 4e81cfc34fa0dc44282a227b394b3450, type: 3}
   mercuryPrefab: {fileID: 4091483955047809889, guid: c79d42e82171cda458fa45d3688180ae, type: 3}
   venusPrefab: {fileID: 8090868213536984944, guid: 2c3015e7c28453041aab7c85c4f1c32a, type: 3}

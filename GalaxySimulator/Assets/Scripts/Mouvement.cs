@@ -13,6 +13,8 @@ public class Mouvement : MonoBehaviour
 
     public GameObject IsMoonOf;
     public static Vector3 SunPos;
+
+    private static int maxOrbitPoints = 25000;
     
     private Vector3 velocity = new Vector3( 0.0f, 0.0f, 0.0f );
     private Vector3 acceleration = new Vector3( 0.0f, 0.0f, 0.0f );
@@ -41,7 +43,7 @@ public class Mouvement : MonoBehaviour
 
         if (IsMoonOf)
             centerOfOrbitField = IsMoonOf.GetComponent<VectorField>();
-    } 
+    }
 
     private Vector3 GetMsSpeedFromKms(Vector3 speedKms)
     {
@@ -94,6 +96,11 @@ public class Mouvement : MonoBehaviour
         }
     }
 
+    public void AddAcceleration(Vector3 newOne)
+    {
+        newAcceleration += newOne;
+    }
+    
     public void UpdatePosition()
     {
         float timeStep = dt * Time.fixedDeltaTime;
@@ -142,8 +149,14 @@ public class Mouvement : MonoBehaviour
             nextAcceleration = centerOfOrbitField.GetVectorFromPos(nextNewPosition);
         }
 
-        float orbitPeriod = ((Mathf.PI * transform.position.magnitude * nextVelocity.magnitude) / 3600) * GetComponent<Planet>().ua;
-        int pointsToDraw = (int)orbitPeriod;
+        float orbitPeriod;
+        Planet planet = GetComponent<Planet>();
+        if (planet)
+            orbitPeriod = ((Mathf.PI * transform.position.magnitude * nextVelocity.magnitude) / 3600) * planet.ua;
+        else
+            orbitPeriod = ((Mathf.PI * transform.position.magnitude * nextVelocity.magnitude) / 3600) * 0.25f;
+        
+        int pointsToDraw = orbitPeriod > maxOrbitPoints ? maxOrbitPoints : (int)orbitPeriod;
         
         for (int iteration = 0; iteration < pointsToDraw; iteration++)
         {
@@ -186,13 +199,8 @@ public class Mouvement : MonoBehaviour
         lineRenderer.positionCount = 0;
     }
     
-    public void DrawOrbit()
+    public void DrawHideOrbit()
     {
-        lineRenderer.enabled = true;
-    }
-    
-    public void HideOrbit()
-    {
-        lineRenderer.enabled = false;
+        lineRenderer.enabled = !lineRenderer.enabled;
     }
 }
