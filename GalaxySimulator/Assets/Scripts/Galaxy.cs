@@ -6,6 +6,9 @@ using UnityEngine;
 
 public class Galaxy : MonoBehaviour
 {
+    [SerializeField] KeyCode InstanciateVessel;
+    [SerializeField] private GameObject vesselPrefab;
+
     [SerializeField] private GameObject sunPrefab;
     [SerializeField] private GameObject mercuryPrefab;
     [SerializeField] private GameObject venusPrefab;
@@ -22,11 +25,15 @@ public class Galaxy : MonoBehaviour
 
     public List<GameObject> planets = new List<GameObject>();
 
-    private List<GameObject> explosions = new List<GameObject>();
+    private EventManager eventManager;
 
+    private GameObject earthObj;
+    
     // Start is called before the first frame update
     void Start()
     {
+        eventManager = GetComponent<EventManager>();
+        
         Vector3 pos = new Vector3(0, 0, 0);
         Vector3 initialSpeed = new Vector3(0, 0, 0);
         float mass = 1.98847f * Mathf.Pow(10, 30);
@@ -56,7 +63,7 @@ public class Galaxy : MonoBehaviour
         GameObject mercury = Instantiate(mercuryPrefab);
         mercury.name = "Mercury";
         mercury.transform.SetParent(galaxy.transform);
-        mercury.GetComponent<Planet>().SetParameters(pos, mass, inclinaisonAngle, rotSpeed, 0.4589f);
+        mercury.GetComponent<Planet>().SetParameters(pos, mass, inclinaisonAngle, rotSpeed);
         mercury.GetComponent<Mouvement>().SetParameter(initialSpeed);
         planets.Add(mercury);
 
@@ -75,7 +82,7 @@ public class Galaxy : MonoBehaviour
         GameObject venus = Instantiate(venusPrefab);
         venus.name = "Venus";
         venus.transform.SetParent(galaxy.transform);
-        venus.GetComponent<Planet>().SetParameters(pos, mass, inclinaisonAngle, rotSpeed, 0.7162f);
+        venus.GetComponent<Planet>().SetParameters(pos, mass, inclinaisonAngle, rotSpeed);
         venus.GetComponent<Mouvement>().SetParameter(initialSpeed);
 
         planets.Add(venus);
@@ -95,9 +102,9 @@ public class Galaxy : MonoBehaviour
         GameObject earth = Instantiate(earthPrefab);
         earth.name = "Earth";
         earth.transform.SetParent(galaxy.transform);
-        earth.GetComponent<Planet>().SetParameters(pos, mass, inclinaisonAngle, rotSpeed, 1.0f);
+        earth.GetComponent<Planet>().SetParameters(pos, mass, inclinaisonAngle, rotSpeed);
         earth.GetComponent<Mouvement>().SetParameter(initialSpeed);
-
+        earthObj = earth;
         planets.Add(earth);
 
         newButton = Instantiate(objectSelectorButton);
@@ -134,7 +141,7 @@ public class Galaxy : MonoBehaviour
         GameObject mars = Instantiate(marsPrefab);
         mars.name = "Mars";
         mars.transform.SetParent(galaxy.transform);
-        mars.GetComponent<Planet>().SetParameters(pos, mass, inclinaisonAngle, rotSpeed, 1.6386f);
+        mars.GetComponent<Planet>().SetParameters(pos, mass, inclinaisonAngle, rotSpeed);
         mars.GetComponent<Mouvement>().SetParameter(initialSpeed);
         planets.Add(mars);
 
@@ -153,7 +160,7 @@ public class Galaxy : MonoBehaviour
         GameObject juno = Instantiate(junoPrefab);
         juno.name = "Juno";
         juno.transform.SetParent(galaxy.transform);
-        juno.GetComponent<Planet>().SetParameters(pos, mass, inclinaisonAngle, rotSpeed, 5.3649f);
+        juno.GetComponent<Planet>().SetParameters(pos, mass, inclinaisonAngle, rotSpeed);
         juno.GetComponent<Mouvement>().SetParameter(initialSpeed);
         planets.Add(juno);
 
@@ -179,6 +186,26 @@ public class Galaxy : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetKeyDown(InstanciateVessel))
+        {
+            Vector3 initialSpeed = new Vector3(31.0f, 0, 0);
+
+            GameObject newVessel = Instantiate(vesselPrefab);
+            newVessel.transform.position = new Vector3(earthObj.transform.position.x, earthObj.transform.position.y, earthObj.transform.position.z + 0.15f);
+            newVessel.name = "Vessel";
+            newVessel.transform.SetParent(galaxy.transform);
+            newVessel.GetComponent<Mouvement>().IsMoonOf = earthObj;
+            newVessel.GetComponent<Mouvement>().SetParameter(initialSpeed);
+            planets.Add(newVessel);
+
+            GameObject newButton = Instantiate(objectSelectorButton);
+            newButton.transform.SetParent(container.transform);
+            newButton.GetComponent<SetCameraTarget>().linkedObject = newVessel;
+            newButton.GetComponent<SetCameraTarget>().SetText(newVessel.name);
+            
+            eventManager.newVesselEvents.Add(new NewVesselEvent(newVessel));
+        }
+        
         foreach (GameObject planet in planets)
         {
             LineRenderer line = planet.GetComponent<LineRenderer>();
@@ -189,7 +216,7 @@ public class Galaxy : MonoBehaviour
             }
         }
 
-        foreach (EventExplosion explosion in GetComponent<EventManager>().explosionEvent)
+        foreach (EventExplosion explosion in eventManager.explosionEvent)
         {
             GameObject newOne = Instantiate(ExplosionPrefab);
             newOne.transform.position = explosion.position;

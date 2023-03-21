@@ -119,7 +119,7 @@ MonoBehaviour:
   mass: 4.8675e+24
   inclinaisonAngle: 0
   rotSpeed: 0
-  ua: 1
+  ua: 0.7162
 --- !u!114 &8090868213536984950
 MonoBehaviour:
   m_ObjectHideFlags: 0
