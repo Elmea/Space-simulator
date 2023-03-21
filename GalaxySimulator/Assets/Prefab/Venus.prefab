@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 8090868213536984937}
   - component: {fileID: 575380356}
   - component: {fileID: -2650676030544352583}
+  - component: {fileID: -8726315468904333649}
   m_Layer: 0
   m_Name: Venus
   m_TagString: Untagged
@@ -118,6 +119,7 @@ MonoBehaviour:
   mass: 4.8675e+24
   inclinaisonAngle: 0
   rotSpeed: 0
+  ua: 1
 --- !u!114 &8090868213536984950
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -132,6 +134,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialspeed: {x: 34.7895, y: 0, z: 0}
   calcOrbitLineEach: 0
+  IsMoonOf: {fileID: 0}
 --- !u!54 &8090868213536984937
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -353,3 +356,20 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
+--- !u!114 &-8726315468904333649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8090868213536984944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aab46cb15597fa843918799f68fb1026, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Vector: {fileID: 3931998310565962668, guid: 7f27e4c617d146a4884229c2312cfbe9, type: 3}
+  coteCubeVectorField: 5
+  showField: 0
+  arrowSize: 1
+  VectorDensity: 0

@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 7531527686195130265}
   - component: {fileID: 1787319111374257012}
   - component: {fileID: 1621876608858247821}
+  - component: {fileID: 1946129775950367547}
   m_Layer: 0
   m_Name: Mars
   m_TagString: Untagged
@@ -118,6 +119,7 @@ MonoBehaviour:
   mass: 6.4185e+23
   inclinaisonAngle: 0
   rotSpeed: 0
+  ua: 1
 --- !u!114 &7531527686195130246
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -132,6 +134,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialspeed: {x: 21.975, y: 0, z: 0}
   calcOrbitLineEach: 0
+  IsMoonOf: {fileID: 0}
 --- !u!54 &7531527686195130265
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -353,3 +356,20 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
+--- !u!114 &1946129775950367547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7531527686195130240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aab46cb15597fa843918799f68fb1026, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Vector: {fileID: 3931998310565962668, guid: 7f27e4c617d146a4884229c2312cfbe9, type: 3}
+  coteCubeVectorField: 0
+  showField: 0
+  arrowSize: 1
+  VectorDensity: 0

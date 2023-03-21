@@ -120,6 +120,7 @@ MonoBehaviour:
   mass: 5.9736e+24
   inclinaisonAngle: 40
   rotSpeed: 100
+  ua: 1
 --- !u!114 &8090868213536984950
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -134,6 +135,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialspeed: {x: 29.291, y: 0, z: 0}
   calcOrbitLineEach: 0
+  IsMoonOf: {fileID: 0}
 --- !u!54 &8090868213536984937
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -272,7 +274,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Vector: {fileID: 3931998310565962668, guid: 7f27e4c617d146a4884229c2312cfbe9, type: 3}
   coteCubeVectorField: 10
-  showField: 1
+  showField: 0
   arrowSize: 5e+15
   VectorDensity: 5
 --- !u!120 &-8328980279611477219
