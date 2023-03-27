@@ -7099,6 +7099,9 @@ MonoBehaviour:
   moonPrefab: {fileID: 4091483955047809889, guid: 7ad1245dabbe0a94e998a0505ccf9f60, type: 3}
   marsPrefab: {fileID: 7531527686195130240, guid: 3a7fd800a10f8b3449ef3dd7627c527e, type: 3}
   junoPrefab: {fileID: 6557527071751192835, guid: 81617eb8a6462594180e77083b834817, type: 3}
+  saturnPrefab: {fileID: 6557527071751192835, guid: d2c94bc7a056b564a937117ff183c622, type: 3}
+  uranusPrefab: {fileID: 6557527071751192835, guid: d8e11669d08a570468a51a09193675fe, type: 3}
+  neptunePrefab: {fileID: 6557527071751192835, guid: da0edcd112a6c764aa907b885d6a182d, type: 3}
   objectSelectorButton: {fileID: 6322178688928169460, guid: 7b259dd622d7bd04681f4e4d73905453, type: 3}
   galaxy: {fileID: 1468582409}
   container: {fileID: 1626187249}
