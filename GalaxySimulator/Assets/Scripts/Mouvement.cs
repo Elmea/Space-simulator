@@ -16,8 +16,8 @@ public class Mouvement : MonoBehaviour
 
     private static int maxOrbitPoints = 25000;
     
-    private Vector3 velocity = new Vector3( 0.0f, 0.0f, 0.0f );
-    private Vector3 acceleration = new Vector3( 0.0f, 0.0f, 0.0f );
+    public Vector3 velocity = new Vector3( 0.0f, 0.0f, 0.0f );
+    public Vector3 acceleration = new Vector3( 0.0f, 0.0f, 0.0f );
     private Vector3 newAcceleration = new Vector3( 0.0f, 0.0f, 0.0f );
     private Vector3 newPosition = new Vector3( 0.0f, 0.0f, 0.0f );
     private static float dt = 3600.0f;
@@ -43,6 +43,7 @@ public class Mouvement : MonoBehaviour
 
         if (IsMoonOf)
             centerOfOrbitField = IsMoonOf.GetComponent<VectorField>();
+
     }
 
     private Vector3 GetMsSpeedFromKms(Vector3 speedKms)
@@ -207,10 +208,5 @@ public class Mouvement : MonoBehaviour
     private void ResetOrbitLine()
     {
         lineRenderer.positionCount = 0;
-    }
-    
-    public void DrawHideOrbit()
-    {
-        lineRenderer.enabled = !lineRenderer.enabled;
     }
 }

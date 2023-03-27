@@ -16,6 +16,11 @@ public class Galaxy : MonoBehaviour
     [SerializeField] private GameObject moonPrefab;   
     [SerializeField] private GameObject marsPrefab;
     [SerializeField] private GameObject junoPrefab;
+    [SerializeField] private GameObject saturnPrefab;
+    [SerializeField] private GameObject uranusPrefab;
+    [SerializeField] private GameObject neptunePrefab;
+
+
 
     [SerializeField] private GameObject objectSelectorButton;
     [SerializeField] private GameObject galaxy;
@@ -40,6 +45,14 @@ public class Galaxy : MonoBehaviour
         float inclinaisonAngle = 0;
         float rotSpeed = 0;
 
+
+        //Null
+
+        GameObject newButton = Instantiate(objectSelectorButton);
+        newButton.transform.SetParent(container.transform);
+        newButton.GetComponent<SetCameraTarget>().linkedObject = null;
+        newButton.GetComponent<SetCameraTarget>().SetText("Free roam");
+
         //Sun
         GameObject sun = Instantiate(sunPrefab);
         sun.name = "Sun";
@@ -48,7 +61,7 @@ public class Galaxy : MonoBehaviour
         sun.GetComponent<Mouvement>().SetParameter(initialSpeed);
         planets.Add(sun);
         
-        GameObject newButton = Instantiate(objectSelectorButton);
+        newButton = Instantiate(objectSelectorButton);
         newButton.transform.SetParent(container.transform);
         newButton.GetComponent<SetCameraTarget>().linkedObject = sun;
         newButton.GetComponent<SetCameraTarget>().SetText(sun.name);
@@ -168,6 +181,64 @@ public class Galaxy : MonoBehaviour
         newButton.transform.SetParent(container.transform);
         newButton.GetComponent<SetCameraTarget>().linkedObject = juno;
         newButton.GetComponent<SetCameraTarget>().SetText(juno.name);
+
+        //Saturn
+        pos = new Vector3(0, 0, 1503f);
+        initialSpeed = new Vector3(9.141f, 0, 0);
+        mass = 5.6846f * Mathf.Pow(10, 26);
+        inclinaisonAngle = 0;
+        rotSpeed = 0;
+
+        GameObject saturn = Instantiate(saturnPrefab);
+        saturn.name = "Saturn";
+        saturn.transform.SetParent(galaxy.transform);
+        saturn.GetComponent<Planet>().SetParameters(pos, mass, inclinaisonAngle, rotSpeed);
+        saturn.GetComponent<Mouvement>().SetParameter(initialSpeed);
+        planets.Add(saturn);
+
+        newButton = Instantiate(objectSelectorButton);
+        newButton.transform.SetParent(container.transform);
+        newButton.GetComponent<SetCameraTarget>().linkedObject = saturn;
+        newButton.GetComponent<SetCameraTarget>().SetText(saturn.name);
+
+        //Uranus
+        pos = new Vector3(0, 0, 3006f);
+        initialSpeed = new Vector3(6.4864f, 0, 0);
+        mass = 8.681f * Mathf.Pow(10, 25);
+        inclinaisonAngle = 0;
+        rotSpeed = 0;
+
+        GameObject uranus = Instantiate(uranusPrefab);
+        uranus.name = "Uranus";
+        uranus.transform.SetParent(galaxy.transform);
+        uranus.GetComponent<Planet>().SetParameters(pos, mass, inclinaisonAngle, rotSpeed);
+        uranus.GetComponent<Mouvement>().SetParameter(initialSpeed);
+        planets.Add(uranus);
+
+        newButton = Instantiate(objectSelectorButton);
+        newButton.transform.SetParent(container.transform);
+        newButton.GetComponent<SetCameraTarget>().linkedObject = uranus;
+        newButton.GetComponent<SetCameraTarget>().SetText(uranus.name);
+
+        //Neptune
+        pos = new Vector3(0, 0, 4537f);
+        initialSpeed = new Vector3(5.3861f, 0, 0);
+        mass = 1.0243f * Mathf.Pow(10, 26);
+        inclinaisonAngle = 0;
+        rotSpeed = 0;
+
+        GameObject neptune = Instantiate(neptunePrefab);
+        neptune.name = "Neptune";
+        neptune.transform.SetParent(galaxy.transform);
+        neptune.GetComponent<Planet>().SetParameters(pos, mass, inclinaisonAngle, rotSpeed);
+        neptune.GetComponent<Mouvement>().SetParameter(initialSpeed);
+        planets.Add(neptune);
+
+        newButton = Instantiate(objectSelectorButton);
+        newButton.transform.SetParent(container.transform);
+        newButton.GetComponent<SetCameraTarget>().linkedObject = neptune;
+        newButton.GetComponent<SetCameraTarget>().SetText(neptune.name);
+
 
     }
 

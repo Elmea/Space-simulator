@@ -8,9 +8,9 @@ public class VectorField : MonoBehaviour
     [SerializeField] private GameObject Vector;
     [SerializeField] float coteCubeVectorField;
     [SerializeField] public bool showField;
-    private bool UpdateShowField;
+    public bool VectorFieldExist = false;
     [SerializeField] float arrowSize = 1;
-    List<GameObject> vectorField = new List<GameObject>();
+    public List<GameObject> vectorField = new List<GameObject>();
 
     [Range(0.0f, 50.0f)]
     public int VectorDensity;
@@ -54,6 +54,7 @@ public class VectorField : MonoBehaviour
 
     public void CreateVectorField()
     {
+        VectorFieldExist = true;
         float tranche = coteCubeVectorField / (VectorDensity);
         Vector3 startCube = new(coteCubeVectorField / 2 + transform.position.x, coteCubeVectorField / 2 + transform.position.y, coteCubeVectorField / 2 + transform.position.z);
 
@@ -76,10 +77,10 @@ public class VectorField : MonoBehaviour
                     if(newPrefab.transform.localPosition.sqrMagnitude < 10)
                     {
                         newPrefab.transform.localScale = new Vector3(0, 0, 0);
-                        //Debug.Log(newPrefab.transform.localPosition.sqrMagnitude);
                     }
                     else
                     { 
+                        Debug.Log(newPrefab.transform.localPosition.sqrMagnitude);
                         newPrefab.transform.localScale = new Vector3(vectorIntensity / transform.lossyScale.x, vectorIntensity / transform.lossyScale.y, vectorIntensity / transform.lossyScale.z);
                     }
                     //newPrefab.transform.localScale = new Vector3(1,1,1);
