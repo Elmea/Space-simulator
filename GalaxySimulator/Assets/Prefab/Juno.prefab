@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 6557527071751192858}
   - component: {fileID: 3119180232266372599}
   - component: {fileID: 7962188537621634922}
+  - component: {fileID: 4129444275649592181}
   m_Layer: 0
   m_Name: Juno
   m_TagString: Untagged
@@ -355,3 +356,16 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
+--- !u!135 &4129444275649592181
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6557527071751192835}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 7
+  m_Center: {x: 0, y: 0, z: 0}

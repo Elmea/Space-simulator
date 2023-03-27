@@ -14,6 +14,8 @@ public class Vessel : MonoBehaviour
     private float accelerationPurcentage;
     private float accelerationValue;
 
+    private ParticleSystem particles;
+    
     private Mouvement movementComp;
 
     [SerializeField] KeyCode incrementGaz;
@@ -31,6 +33,7 @@ public class Vessel : MonoBehaviour
         accelerationValue = thrustValue / vesselMass;
         movementComp = GetComponent<Mouvement>();
         orientation = transform.rotation.eulerAngles;
+        particles = GetComponent<ParticleSystem>();
     }
 
     private void FixedUpdate()
@@ -42,6 +45,7 @@ public class Vessel : MonoBehaviour
                 float newAcc = accelerationValue * accelerationPurcentage;
 
                 movementComp.AddAcceleration(transform.forward * newAcc);
+                
             }
         }
     }
@@ -55,12 +59,15 @@ public class Vessel : MonoBehaviour
                 accelerationPurcentage += 0.5f * Time.deltaTime;
                 if (accelerationPurcentage > 1.0f)
                     accelerationPurcentage = 1.0f;
+                
             }
             if (Input.GetKey(decrementGaz))
             {
                 accelerationPurcentage -= 0.5f * Time.deltaTime;
-                if (accelerationPurcentage < 0.0f)
+                if (accelerationPurcentage <= 0.0f)
+                {
                     accelerationPurcentage = 0.0f;
+                }
             }
             
             if (Input.GetKey(minusYaw))

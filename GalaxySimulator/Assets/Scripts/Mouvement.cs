@@ -54,7 +54,17 @@ public class Mouvement : MonoBehaviour
     {
         return speedMs / 1000.0f;
     }
+
+    public Vector3 GetSpeed()
+    {
+        return GetKmsSpeedFromMs(velocity);
+    }
     
+    public Vector3 GetAcceleration()
+    {
+        return acceleration;
+    }
+
     private void OnTriggerStay(Collider other)
     {
         VectorField field = other.GetComponent<VectorField>();
