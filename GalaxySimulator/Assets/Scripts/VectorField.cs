@@ -19,7 +19,6 @@ public class VectorField : MonoBehaviour
     
     private void Start()
     {
-        //showField = false;
         planet = GetComponent<Planet>();
         if(showField)
         {
@@ -33,7 +32,6 @@ public class VectorField : MonoBehaviour
     {
 
         Vector3 test = (position - (transform.position * Planet.DistanceScale));
-        //Debug.Log(test);
         return test;
     }
     private Vector3 GetVector(Vector3 positionInField)
@@ -83,8 +81,6 @@ public class VectorField : MonoBehaviour
                         Debug.Log(newPrefab.transform.localPosition.sqrMagnitude);
                         newPrefab.transform.localScale = new Vector3(vectorIntensity / transform.lossyScale.x, vectorIntensity / transform.lossyScale.y, vectorIntensity / transform.lossyScale.z);
                     }
-                    //newPrefab.transform.localScale = new Vector3(1,1,1);
-
                     vectorField.Add(newPrefab);
                 }
             }
