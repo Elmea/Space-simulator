@@ -261,13 +261,14 @@ public class Galaxy : MonoBehaviour
             Vector3 initialSpeed = new Vector3(31.0f, 0, 0);
 
             GameObject newVessel = Instantiate(vesselPrefab);
+            newVessel.GetComponent<Vessel>().cameraMvt = camera.GetComponent<CameraMvt>();
             newVessel.transform.position = new Vector3(earthObj.transform.position.x, earthObj.transform.position.y, earthObj.transform.position.z + 0.15f);
             newVessel.name = "Vessel";
             newVessel.transform.SetParent(galaxy.transform);
             newVessel.GetComponent<Mouvement>().IsMoonOf = earthObj;
             newVessel.GetComponent<Mouvement>().SetParameter(initialSpeed);
             planets.Add(newVessel);
-
+            
             GameObject newButton = Instantiate(objectSelectorButton);
             newButton.transform.SetParent(container.transform);
             newButton.GetComponent<SetCameraTarget>().linkedObject = newVessel;

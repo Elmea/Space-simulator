@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Vessel : MonoBehaviour
 {
-    [SerializeField] private CameraMvt camera;
+    [SerializeField] public CameraMvt cameraMvt;
 
     [SerializeField] private float thrustValue;
     [SerializeField] private float vesselMass;
@@ -16,8 +16,6 @@ public class Vessel : MonoBehaviour
     private float accelerationPurcentage;
     private float accelerationValue;
 
-    private ParticleSystem particles;
-    
     private Mouvement movementComp;
 
     [SerializeField] KeyCode incrementGaz;
@@ -35,7 +33,6 @@ public class Vessel : MonoBehaviour
         accelerationValue = thrustValue / vesselMass;
         movementComp = GetComponent<Mouvement>();
         orientation = transform.rotation.eulerAngles;
-        particles = GetComponent<ParticleSystem>();
     }
 
     private void FixedUpdate()
@@ -54,7 +51,7 @@ public class Vessel : MonoBehaviour
 
     void Update()
     {
-        if (camera.target != this.gameObject)
+        if (cameraMvt.target != this.gameObject)
             return;
         
         if (TimeManipulation.timeMultiplier == 1)
