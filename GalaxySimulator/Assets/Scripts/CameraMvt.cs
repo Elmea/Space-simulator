@@ -63,8 +63,6 @@ public class CameraMvt : MonoBehaviour
     {
         transform.LookAt(target.transform);
 
-        //Debug.Log(transform.forward);
-
         posFromTarget = posXFromTarget + posYFromTarget +posZFromTarget;
 
         if (Input.GetKey(left))
