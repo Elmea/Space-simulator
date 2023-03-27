@@ -12,6 +12,7 @@ public class SetCameraTarget : MonoBehaviour
     {
         //Debug.Log(linkedObject.name);
         cam.GetComponent<CameraMvt>().target = linkedObject;
+        cam.GetComponent<CameraMvt>().posZFromTarget = linkedObject.transform.lossyScale * 1.5f;
     }
 
     public void SetText(string str)
