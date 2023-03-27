@@ -46,11 +46,13 @@ public class Mouvement : MonoBehaviour
 
     }
 
+    // Used to export base value from Km/s to m/s
     private Vector3 GetMsSpeedFromKms(Vector3 speedKms)
     {
         return speedKms * 1000.0f;
     }
-    
+
+    // Used to export calculated value from m/s to km/s in order to display them
     private Vector3 GetKmsSpeedFromMs(Vector3 speedMs)
     {
         return speedMs / 1000.0f;
@@ -66,6 +68,8 @@ public class Mouvement : MonoBehaviour
         return acceleration;
     }
 
+    // Check if we are on an other celestial object sphere of influence
+    // Dont need to try to calculate vector field if we are too far
     private void OnTriggerStay(Collider other)
     {
         VectorField field = other.GetComponent<VectorField>();
@@ -112,6 +116,8 @@ public class Mouvement : MonoBehaviour
         newAcceleration += newOne;
     }
     
+    // Main movement function
+    // Using verlet integration
     public void UpdatePosition()
     {
         float timeStep = dt * Time.fixedDeltaTime;
@@ -138,6 +144,7 @@ public class Mouvement : MonoBehaviour
         }
     }
 
+    // Calc and display trajectory dynamicly
     private void CalcOrbitLine()
     {
         if (!lineRenderer)

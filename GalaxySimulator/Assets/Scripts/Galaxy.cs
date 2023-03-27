@@ -45,9 +45,8 @@ public class Galaxy : MonoBehaviour
         float inclinaisonAngle = 0;
         float rotSpeed = 0;
 
-
+        #region GalaxyInstanciate
         //Null
-
         GameObject newButton = Instantiate(objectSelectorButton);
         newButton.transform.SetParent(container.transform);
         newButton.GetComponent<SetCameraTarget>().linkedObject = null;
@@ -238,8 +237,7 @@ public class Galaxy : MonoBehaviour
         newButton.transform.SetParent(container.transform);
         newButton.GetComponent<SetCameraTarget>().linkedObject = neptune;
         newButton.GetComponent<SetCameraTarget>().SetText(neptune.name);
-
-
+        #endregion
     }
 
     private void FixedUpdate()
@@ -257,6 +255,7 @@ public class Galaxy : MonoBehaviour
 
     private void Update()
     {
+        //Instanciate a vessel if the key is pressed
         if (Input.GetKeyDown(InstanciateVessel))
         {
             Vector3 initialSpeed = new Vector3(31.0f, 0, 0);

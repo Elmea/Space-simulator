@@ -5212,10 +5212,13 @@ MonoBehaviour:
   down: 304
   forward: 119
   back: 115
+  speedUp: 101
+  speedDown: 113
   hideCursor: 324
   speed: 0.1
   mouseSensitivity: 2
   target: {fileID: 0}
+  posZFromTarget: {x: 0, y: 0, z: 10}
 --- !u!1 &990760853
 GameObject:
   m_ObjectHideFlags: 0
@@ -6459,10 +6462,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Camera key mapping :\n- Z : Forward     - S : Backward\n- D : Right         
-    - A : Left\n- Right click : Capture / Uncapture mouse\n- T : Spawn vessel \nVessel
-    key mapping (When selected) : \n- Z/S : Pitch           - H : Increase Gaz\n-
-    A/D : Yaw            - N : Decrease Gaz\n- Q/E : Roll            \n\n"
+  m_text: "Camera key mapping :\n- Z : Forward     - S : Backward   - Q : Speed up
+    Cam\n- D : Right          - A : Left        - Q : Speed down Cam\n- Right click
+    : Capture / Uncapture mouse\n- T : Spawn vessel \nVessel key mapping (When selected)
+    : \n- Z/S : Pitch           - H : Increase Gaz\n- A/D : Yaw            - N :
+    Decrease Gaz\n- Q/E : Roll            \n\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class Vessel : MonoBehaviour
 {
+    [SerializeField] private CameraMvt camera;
+
     [SerializeField] private float thrustValue;
     [SerializeField] private float vesselMass;
     [SerializeField] private float rotationSpeed;
@@ -52,6 +54,9 @@ public class Vessel : MonoBehaviour
 
     void Update()
     {
+        if (camera.target != this.gameObject)
+            return;
+        
         if (TimeManipulation.timeMultiplier == 1)
         {
             if (Input.GetKey(incrementGaz))

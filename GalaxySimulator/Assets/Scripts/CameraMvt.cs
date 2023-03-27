@@ -8,6 +8,8 @@ public class CameraMvt : MonoBehaviour
     [SerializeField] KeyCode down;
     [SerializeField] KeyCode forward;
     [SerializeField] KeyCode back;
+    [SerializeField] KeyCode speedUp;
+    [SerializeField] KeyCode speedDown;
 
     [SerializeField] KeyCode hideCursor;
 
@@ -41,6 +43,16 @@ public class CameraMvt : MonoBehaviour
                 newPos -= transform.forward * speed;
             if (Input.GetKey(forward))
                 newPos += transform.forward * speed;
+
+            if (Input.GetKey(speedDown))
+            {
+                speed -= 0.01f;
+                if (speed <= 0.0f)
+                    speed = 0.0f;
+            }
+            
+            if (Input.GetKey(speedUp))
+                speed += 0.01f;
 
             transform.position = newPos;
 
