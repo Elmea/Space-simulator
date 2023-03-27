@@ -203,4 +203,9 @@ public class Mouvement : MonoBehaviour
     {
         lineRenderer.enabled = !lineRenderer.enabled;
     }
+
+    public float GetSpeed()
+    {
+        return initialspeed.x;
+    }
 }

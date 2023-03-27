@@ -45,6 +45,14 @@ public class Galaxy : MonoBehaviour
         float inclinaisonAngle = 0;
         float rotSpeed = 0;
 
+
+        //Null
+
+        GameObject newButton = Instantiate(objectSelectorButton);
+        newButton.transform.SetParent(container.transform);
+        newButton.GetComponent<SetCameraTarget>().linkedObject = null;
+        newButton.GetComponent<SetCameraTarget>().SetText("Free roam");
+
         //Sun
         GameObject sun = Instantiate(sunPrefab);
         sun.name = "Sun";
@@ -53,7 +61,7 @@ public class Galaxy : MonoBehaviour
         sun.GetComponent<Mouvement>().SetParameter(initialSpeed);
         planets.Add(sun);
         
-        GameObject newButton = Instantiate(objectSelectorButton);
+        newButton = Instantiate(objectSelectorButton);
         newButton.transform.SetParent(container.transform);
         newButton.GetComponent<SetCameraTarget>().linkedObject = sun;
         newButton.GetComponent<SetCameraTarget>().SetText(sun.name);

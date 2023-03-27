@@ -9,7 +9,9 @@ public class Statistic : MonoBehaviour
     [SerializeField] TextMeshProUGUI name;
     [SerializeField] TextMeshProUGUI speed;
     [SerializeField] TextMeshProUGUI mass;
-    [SerializeField] TextMeshProUGUI acceleration;
+
+    [SerializeField] CameraMvt cam;
+
     void Start()
     {
         
@@ -18,6 +20,12 @@ public class Statistic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (cam.target != null)
+        {
+            name.text = cam.target.name;
+            speed.text = cam.target.GetComponent<Mouvement>().GetSpeed().ToString() + " km/s";
+            mass.text = cam.target.GetComponent<Planet>().mass.ToString() + " kg";
+        }
+
     }
 }
