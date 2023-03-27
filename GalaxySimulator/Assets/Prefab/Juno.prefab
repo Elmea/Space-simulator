@@ -17,8 +17,7 @@ GameObject:
   - component: {fileID: 6557527071751192858}
   - component: {fileID: 3119180232266372599}
   - component: {fileID: 7962188537621634922}
-  - component: {fileID: -7830912097336176804}
-  - component: {fileID: 6366402355178935959}
+  - component: {fileID: 4129444275649592181}
   m_Layer: 0
   m_Name: Juno
   m_TagString: Untagged
@@ -136,8 +135,6 @@ MonoBehaviour:
   initialspeed: {x: 12.448, y: 0, z: 0}
   calcOrbitLineEach: 0
   IsMoonOf: {fileID: 0}
-  velocity: {x: 0, y: 0, z: 0}
-  acceleration: {x: 0, y: 0, z: 0}
 --- !u!54 &6557527071751192858
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -359,27 +356,7 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
---- !u!114 &-7830912097336176804
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6557527071751192835}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aab46cb15597fa843918799f68fb1026, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  planet: {fileID: 0}
-  Vector: {fileID: 3931998310565962668, guid: 7f27e4c617d146a4884229c2312cfbe9, type: 3}
-  coteCubeVectorField: 10
-  showField: 0
-  VectorFieldExist: 0
-  arrowSize: 5e+19
-  vectorField: []
-  VectorDensity: 5
---- !u!135 &6366402355178935959
+--- !u!135 &4129444275649592181
 SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -390,5 +367,5 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 40
+  m_Radius: 7
   m_Center: {x: 0, y: 0, z: 0}

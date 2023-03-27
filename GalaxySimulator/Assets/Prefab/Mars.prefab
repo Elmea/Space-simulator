@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 1787319111374257012}
   - component: {fileID: 1621876608858247821}
   - component: {fileID: 1946129775950367547}
-  - component: {fileID: 6869558864185429012}
+  - component: {fileID: -903269545522234952}
   m_Layer: 0
   m_Name: Mars
   m_TagString: Untagged
@@ -136,8 +136,6 @@ MonoBehaviour:
   initialspeed: {x: 21.975, y: 0, z: 0}
   calcOrbitLineEach: 0
   IsMoonOf: {fileID: 0}
-  velocity: {x: 0, y: 0, z: 0}
-  acceleration: {x: 0, y: 0, z: 0}
 --- !u!54 &7531527686195130265
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -371,15 +369,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aab46cb15597fa843918799f68fb1026, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  planet: {fileID: 0}
   Vector: {fileID: 3931998310565962668, guid: 7f27e4c617d146a4884229c2312cfbe9, type: 3}
-  coteCubeVectorField: 10
+  coteCubeVectorField: 0
   showField: 0
-  VectorFieldExist: 0
-  arrowSize: 5e+15
-  vectorField: []
-  VectorDensity: 5
---- !u!135 &6869558864185429012
+  arrowSize: 1
+  VectorDensity: 0
+--- !u!135 &-903269545522234952
 SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -390,5 +385,5 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 40
+  m_Radius: 10
   m_Center: {x: 0, y: 0, z: 0}

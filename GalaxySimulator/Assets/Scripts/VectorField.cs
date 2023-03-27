@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 public class VectorField : MonoBehaviour
 {
-    public Planet planet;
+    private Planet planet;
     [SerializeField] private GameObject Vector;
     [SerializeField] float coteCubeVectorField;
     [SerializeField] public bool showField;

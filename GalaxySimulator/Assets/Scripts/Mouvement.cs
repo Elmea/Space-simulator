@@ -43,6 +43,7 @@ public class Mouvement : MonoBehaviour
 
         if (IsMoonOf)
             centerOfOrbitField = IsMoonOf.GetComponent<VectorField>();
+
     }
 
     private Vector3 GetMsSpeedFromKms(Vector3 speedKms)
@@ -54,7 +55,17 @@ public class Mouvement : MonoBehaviour
     {
         return speedMs / 1000.0f;
     }
+
+    public Vector3 GetSpeed()
+    {
+        return GetKmsSpeedFromMs(velocity);
+    }
     
+    public Vector3 GetAcceleration()
+    {
+        return acceleration;
+    }
+
     private void OnTriggerStay(Collider other)
     {
         VectorField field = other.GetComponent<VectorField>();
@@ -197,15 +208,5 @@ public class Mouvement : MonoBehaviour
     private void ResetOrbitLine()
     {
         lineRenderer.positionCount = 0;
-    }
-    
-    public void DrawHideOrbit()
-    {
-        lineRenderer.enabled = !lineRenderer.enabled;
-    }
-
-    public float GetSpeed()
-    {
-        return initialspeed.x;
     }
 }
