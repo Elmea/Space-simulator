@@ -9,20 +9,24 @@ public class ButtonVectorField : MonoBehaviour
 
     public void OnClick()
     { 
+        if (Camera.target.layer == 3)
+        {
+            return;
+        }
+
         showField = Camera.target.GetComponent<VectorField>().showField;
-        if (showField)
-        {
-            
-            Camera.target.GetComponent<VectorField>().ShowVectorField(false);
-        }
-        else
-        {
-            if (!Camera.target.GetComponent<VectorField>().VectorFieldExist)
+            if (showField)
             {
-                Camera.target.GetComponent<VectorField>().CreateVectorField();
+
+                Camera.target.GetComponent<VectorField>().ShowVectorField(false);
             }
-            Camera.target.GetComponent<VectorField>().ShowVectorField(true);
-        }
-        Debug.Log(showField);
+            else
+            {
+                if (!Camera.target.GetComponent<VectorField>().VectorFieldExist)
+                {
+                    Camera.target.GetComponent<VectorField>().CreateVectorField();
+                }
+                Camera.target.GetComponent<VectorField>().ShowVectorField(true);
+            }
     }
 }

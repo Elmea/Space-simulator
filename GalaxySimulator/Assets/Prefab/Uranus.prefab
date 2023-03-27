@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 3119180232266372599}
   - component: {fileID: 7962188537621634922}
   - component: {fileID: -1365694743371418975}
+  - component: {fileID: 4799811289902386935}
   m_Layer: 0
   m_Name: Uranus
   m_TagString: Untagged
@@ -378,3 +379,16 @@ MonoBehaviour:
   arrowSize: 5e+17
   vectorField: []
   VectorDensity: 5
+--- !u!135 &4799811289902386935
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6557527071751192835}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 100
+  m_Center: {x: 0, y: 0, z: 0}

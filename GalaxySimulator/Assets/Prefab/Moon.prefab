@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 4091483955047809948}
   - component: {fileID: -8702531668106687255}
   - component: {fileID: 88556613139946783}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Moon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -242,6 +242,8 @@ MonoBehaviour:
   initialspeed: {x: 38.86, y: 0, z: 0}
   calcOrbitLineEach: 0
   IsMoonOf: {fileID: 0}
+  velocity: {x: 0, y: 0, z: 0}
+  acceleration: {x: 0, y: 0, z: 0}
 --- !u!54 &-8702531668106687255
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 4091483955047809945}
   - component: {fileID: 3187640658457110790}
   - component: {fileID: 5349225914342942972}
+  - component: {fileID: 8036023965788169175}
   m_Layer: 0
   m_Name: Mercury
   m_TagString: Untagged
@@ -378,3 +379,16 @@ MonoBehaviour:
   arrowSize: 4e+15
   vectorField: []
   VectorDensity: 5
+--- !u!135 &8036023965788169175
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4091483955047809889}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 40
+  m_Center: {x: 0, y: 0, z: 0}
