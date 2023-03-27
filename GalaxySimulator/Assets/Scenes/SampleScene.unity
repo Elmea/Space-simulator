@@ -771,8 +771,8 @@ MonoBehaviour:
   camera: {fileID: 963194225}
   name: {fileID: 486383773}
   speed: {fileID: 990760855}
-  mass: {fileID: 485442969}
-  acceleration: {fileID: 1083395035}
+  mass: {fileID: 1083395035}
+  acceleration: {fileID: 485442969}
 --- !u!114 &152358056
 MonoBehaviour:
   m_ObjectHideFlags: 0
