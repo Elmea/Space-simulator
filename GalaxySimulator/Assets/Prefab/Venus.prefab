@@ -135,6 +135,8 @@ MonoBehaviour:
   initialspeed: {x: 34.7895, y: 0, z: 0}
   calcOrbitLineEach: 0
   IsMoonOf: {fileID: 0}
+  velocity: {x: 0, y: 0, z: 0}
+  acceleration: {x: 0, y: 0, z: 0}
 --- !u!54 &8090868213536984937
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -368,8 +370,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aab46cb15597fa843918799f68fb1026, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  planet: {fileID: 0}
   Vector: {fileID: 3931998310565962668, guid: 7f27e4c617d146a4884229c2312cfbe9, type: 3}
-  coteCubeVectorField: 5
+  coteCubeVectorField: 10
   showField: 0
-  arrowSize: 1
-  VectorDensity: 0
+  VectorFieldExist: 0
+  arrowSize: 5e+15
+  vectorField: []
+  VectorDensity: 5

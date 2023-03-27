@@ -20,7 +20,6 @@ public class ButtonVectorField : MonoBehaviour
             if (!Camera.target.GetComponent<VectorField>().VectorFieldExist)
             {
                 Camera.target.GetComponent<VectorField>().CreateVectorField();
-                Debug.Log("fgfdgfdg");
             }
             Camera.target.GetComponent<VectorField>().ShowVectorField(true);
         }
